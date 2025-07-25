@@ -110,11 +110,19 @@ function novi_theme_customize_register($wp_customize)
     $wp_customize->add_setting('novi_typography_mime_note', [
         'sanitize_callback' => '__return_null',
     ]);
+    $doc_url = esc_url('https://cupiolistudio.it/novi/documentazione');
+
     $wp_customize->add_control('novi_typography_mime_note', [
         'type'        => 'hidden',
-        'label'      => 'How to activate load font?',
+        'label'       => __('How to activate load font?', 'novi'),
         'section'     => 'novi_typography_section',
-        'description' => wp_kses_post(__('The font are deactivate by default.<br><br> More precisely it\'s not possible to upload the fonts. <br><br> For more information on how to enable font uploads, please see the <a href="https://cupiolistudio.it/novi/documentazione" target="_blank" aria-label="Novi Theme documentation" >official documentation</a>.', 'novi'))
+        'description' => wp_kses_post(
+            __('The font feature is deactivated by default.<br><br>', 'novi') .
+                __('More precisely, it\'s not possible to upload fonts directly.<br><br>', 'novi') .
+                '<a href="' . $doc_url . '" target="_blank" rel="noopener noreferrer">' .
+                __('See the official documentation', 'novi') .
+                '</a>'
+        ),
     ]);
 }
 add_action('customize_register', __NAMESPACE__ . '\\novi_theme_customize_register');
