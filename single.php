@@ -49,23 +49,23 @@ get_header();
             </nav>
         </div>
         <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-                <article <?php post_class('page-content container'); ?> id="post-<?php the_ID(); ?>"
-                    aria-labelledby="post-title-<?php the_ID(); ?>">
+        <article <?php post_class('page-content container'); ?> id="post-<?php the_ID(); ?>"
+            aria-labelledby="post-title-<?php the_ID(); ?>">
 
-                    <?php
+            <?php
                     echo '<div class="has-global-padding is-layout-constrained">';
                     the_content();
                     echo '</div>';
                     ?>
-                    <?php
+            <?php
                     wp_link_pages(array(
                         'before' => '<div class="page-links">' . __('Pagine:', 'novi'),
                         'after'  => '</div>',
                     ));
                     ?>
 
-                </article>
-                <?php
+        </article>
+        <?php
                 // If comments are open or there's at least one comment, load the comment template.
                 if (comments_open() || get_comments_number()) :
                     echo '<div class="comments-area alignfull is-layout-constrained has-global-padding">';
