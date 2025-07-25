@@ -211,4 +211,4 @@ function enqueue_editor_block_styles()
         }
     }
 }
-\add_action('enqueue_block_editor_assets', __NAMESPACE__ . '\\enqueue_editor_block_styles');
+\add_action('enqueue_block_assets', __NAMESPACE__ . '\\enqueue_editor_block_styles');
