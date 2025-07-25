@@ -1,0 +1,895 @@
+/**
+ * File: assets/css/style.css
+ * Description: Foglio di stile principale del tema, generato da SCSS o scritto a mano. Utilizza le variabili da theme.json.
+ *
+ * @package novi
+ * @since 1.0.0
+ */
+
+/* --------------------------------- */
+/*            GLOBAL RESET           */
+/* --------------------------------- */
+/* Reset di font-p per margini, padding, box sizing e decorazioni */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none !important;
+}
+
+/* --------------------------------- */
+/*           font-p HTML & BODY        */
+/* --------------------------------- */
+/* Comportamenti di font-p per html e body */
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden !important;
+}
+
+/* Ottimizzazioni di rendering font e smoothing */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* --------------------------------- */
+/*          SCROLLBAR STYLES         */
+/* --------------------------------- */
+/* Stile personalizzato per scrollbar per accessibilità */
+html::-webkit-scrollbar {
+  width: 12px;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+}
+
+/* --------------------------------- */
+/*          ACCESSIBILITY             */
+/* --------------------------------- */
+/* Gestione focus visibile e accessibilità per elementi interattivi */
+
+/* Rimuove outline di default */
+:focus {
+  outline: none;
+}
+
+/* Outline visibile solo quando focus è attivo tramite tastiera */
+:focus-visible {
+  outline: 2px solid var(--wp--preset--color--focus);
+  outline-offset: 2px;
+}
+
+/* Focus coerente su link */
+a:focus {
+  outline: 2px solid var(--wp--preset--color--focus);
+  outline-offset: 2px;
+  border-radius: 30px;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--wp--preset--color--focus);
+  outline-offset: 2px;
+}
+
+/* Focus coerente su altri elementi interattivi */
+button:focus,
+input:focus,
+select:focus,
+textarea:focus,
+summary:focus,
+details:focus,
+[tabindex]:focus {
+  outline: none;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible,
+details:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--wp--preset--color--primary);
+  outline-offset: 2px;
+}
+
+/* Miglioramenti visivi per elementi con stato corrente */
+[aria-current="step"] {
+  font-weight: bold;
+  border-bottom: 1px solid var(--wp--preset--color--primary);
+}
+
+/* Disabilitazione visiva e interattiva per elementi disabilitati */
+[aria-disabled="true"] {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Accessibilità per checkbox e radio con colore accentuato */
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--wp--preset--color--button);
+}
+
+/* Accessibilità per elementi details/summary */
+details summary {
+  cursor: pointer;
+  outline: none;
+}
+
+details[open] summary::after {
+  content: "▲";
+  float: right;
+  font-size: 0.75rem;
+}
+
+details summary::after {
+  content: "▼";
+  float: right;
+  font-size: 0.75rem;
+}
+
+/* Miglior visibilità per messaggi di alert e live regions */
+[role="alert"],
+[aria-live="assertive"] {
+  color: var(--wp--preset--color--warning);
+  font-weight: bold;
+}
+
+[aria-live="polite"] {
+  color: var(--wp--preset--color--warning);
+}
+
+/* --------------------------------- */
+/*             IMMAGINI              */
+/* --------------------------------- */
+/* Stile font-p per immagini e figure */
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+figure {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+}
+
+figcaption {
+  font-style: italic;
+  font-size: var(--wp--preset--font-size--font-p) !important;
+  color: var(--wp--preset--color--basecolor) !important;
+  margin-top: 10px !important;
+  margin-bottom: 16px !important;
+  line-height: var(--wp--custom--line-height--small);
+}
+
+/* Transizioni e animazioni per SVG */
+svg,
+svg path,
+svg rect {
+  transition: 0.3s all cubic-bezier(0.39, 0.575, 0.565, 1);
+  animation-timing-function: ease-in-out;
+}
+
+/* --------------------------------- */
+/*          DEFINITION LIST          */
+/* --------------------------------- */
+/* Stile per liste di definizioni (dl, dt, dd) */
+dl {
+  margin-bottom: 30px;
+  font-size: var(--wp--preset--font-size--font-p);
+  font-weight: 400;
+  color: var(--wp--preset--color--basecolor);
+}
+
+dt {
+  font-size: var(--wp--preset--font-size--font-p);
+  line-height: var(--wp--custom--line-height--tight);
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: var(--wp--preset--color--button);
+}
+
+dd {
+  padding-left: 1rem;
+  line-height: var(--wp--custom--line-height--tight);
+  margin-bottom: 20px;
+}
+
+/* --------------------------------- */
+/*             TABLES                */
+/* --------------------------------- */
+/* Stile font-p per tabelle, caption, intestazioni e righe */
+table {
+  width: 100%;
+  margin-bottom: 30px;
+  border-collapse: collapse;
+}
+
+table caption {
+  padding: 20px;
+  background-color: var(--wp--preset--color--secondary);
+  text-transform: uppercase;
+  font-size: var(--wp--preset--wp--preset--font-size--font-2);
+  font-weight: 600;
+  color: var(--wp--preset--color-contrastcolor);
+}
+
+th,
+td {
+  border: none !important;
+  padding: 0.75rem !important;
+}
+
+td {
+  font-weight: 400;
+  color: var(--wp--preset--color--basecolor);
+  font-size: var(--wp--preset--font-size--font-p);
+}
+
+tbody th,
+th {
+  font-weight: 600;
+  text-align: left;
+  background: var(--wp--preset--color--basecolor);
+  color: var(--wp--preset--color--primary);
+}
+
+tr:nth-child(even) {
+  background: var(--wp--preset--color--primary);
+}
+
+tr:nth-child(odd) {
+  background: var(--wp--preset--color--secondary);
+}
+
+tfoot tr {
+  background: var(--wp--preset--color--basecolor) !important;
+}
+
+tfoot td {
+  color: var(--wp--preset--color--primary);
+  font-weight: 600;
+}
+
+/* --------------------------------- */
+/*             TYPOGRAPHY            */
+/* --------------------------------- */
+/* Stili font-p per titoli, paragrafi, link e testo */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a {
+  word-wrap: break-word;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--wp--preset--font-family--heading);
+  line-height: var(--wp--custom--line-height--small);
+}
+/* Font family utilities */
+.font-pally {
+  font-family: var(--wp--preset--font-family--heading);
+}
+.font-neco {
+  font-family: var(--wp--preset--font-family--body);
+}
+/* --------------------------------- */
+/*               LISTS               */
+/* --------------------------------- */
+/* Margini e padding per liste ordinate e non ordinate */
+ul,
+ol {
+  margin: 20px 0 30px 0;
+  padding: 0 20px;
+}
+
+ul li,
+ol li {
+  margin-bottom: 10px;
+  line-height: var(--wp--custom--line-height--normal);
+}
+
+ul li::marker,
+ol li::marker {
+  color: var(--wp--preset--color--button);
+}
+
+/* Rimozione stili predefiniti per liste in header e footer */
+.header ol,
+.header ul,
+.footer ol,
+.footer ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.header ol li,
+.header ul li,
+.footer ol li,
+.footer ul li {
+  margin: 0;
+  padding: 0;
+}
+
+/* --------------------------------- */
+/*               LINKS               */
+/* --------------------------------- */
+/* Stile font-p e transizioni per link */
+a {
+  transition: 0.3s all ease-in-out;
+  color: var(--wp--preset--color--basecolor);
+}
+
+a:visited,
+a:active {
+  color: var(--wp--preset--color--basecolor);
+}
+
+a:hover {
+  color: var(--wp--preset--color--hover);
+}
+
+/* --------------------------------- */
+/*             FORM ELEMENTS         */
+/* --------------------------------- */
+/* Stili font-p per input, textarea, select e bottoni */
+
+/* Label per form */
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 500;
+  line-height: var(--wp--custom--line-height--normal);
+}
+
+/* Screen reader text utility per accessibilità */
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+  word-wrap: normal !important;
+}
+.screen-reader-text:focus {
+  background-color: var(--wp--preset--color--primary);
+  clip: auto !important;
+  clip-path: none;
+  color: var(--wp--preset--color--contrastcolor);
+  display: block;
+  font-size: 1em;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000;
+}
+
+/* Input, select e textarea font-p style */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+input[type="search"],
+input[type="url"],
+input[type="tel"],
+input[type="range"],
+select,
+textarea {
+  border: none;
+  border-bottom: 1px solid var(--wp--preset--color--secondary);
+  padding: 5px 0;
+  width: 100%;
+  font-size: var(--wp--preset--font-size--font-p);
+  font-family: var(--wp--preset--font-family--heading);
+  color: var(--wp--preset--color--basecolor);
+  transition: 0.3s;
+  background-color: transparent;
+  margin-bottom: 20px;
+}
+
+/* Focus style per input, select e textarea */
+input:focus,
+textarea:focus,
+select:focus {
+  border-bottom: 1px solid var(--wp--preset--color--secondary);
+  outline: none;
+}
+
+/* Stile per autofill di Chrome */
+input:-webkit-autofill {
+  box-shadow: inset 0 0 0 9999px var(--wp--preset--color--primary);
+  -webkit-box-shadow: inset 0 0 0 9999px var(--wp--preset--color--primary);
+}
+input:-webkit-autofill:focus {
+  box-shadow: 0 0 0 50px var(--wp--preset--color--primary) inset;
+  -webkit-box-shadow: 0 0 0 50px var(--wp--preset--color--primary) inset;
+}
+
+/* Textarea specific styles */
+textarea {
+  height: 100px;
+  min-height: 100px;
+  resize: none;
+  font-family: var(--wp--preset--font-family--heading);
+  margin-bottom: 40px;
+}
+
+/* Range input accent color */
+input[type="range"] {
+  accent-color: var(--wp--preset--color--button);
+}
+
+/* Submit button styles */
+input[type="submit"],
+button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 15px 0;
+  background-color: var(--wp--preset--color--button);
+  border: none;
+  color: var(--wp--preset--color--basecolor);
+  font-size: var(--wp--preset--font-size--font-p);
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s all ease-in-out;
+  border-radius: 30px;
+}
+
+input[type="submit"]:hover,
+button[type="submit"]:hover {
+  background-color: var(--wp--preset--color--hover);
+  border-radius: 30px;
+}
+
+/* --------------------------------- */
+/*             OTHERS                */
+/* --------------------------------- */
+/* Stili per blockquote, hr, address, kbd, pre, button, fieldset, legend */
+
+/* Blockquote stile */
+blockquote {
+  font-style: italic;
+  color: var(--wp--preset--color--button);
+}
+
+blockquote::before {
+  content: "\0023";
+  color: var(--wp--preset--color--button);
+  font-size: var(--wp--preset--font-size--font-2);
+  font-weight: 600;
+  opacity: 0.5;
+}
+
+/* Orizzontale separatore */
+hr {
+  border: 1px solid var(--wp--preset--color--secondary);
+  margin: 40px 0;
+}
+
+/* Stile per indirizzo */
+address {
+  margin-bottom: 30px;
+  font-style: normal;
+}
+
+/* Stile per tasti da tastiera */
+kbd {
+  font-weight: 700;
+  color: var(--wp--preset--color--button);
+}
+
+/* Stile per blocchi di codice */
+pre {
+  font-family: var(--wp--preset--font-family--heading);
+  line-height: var(--wp--custom--line-height--normal);
+  margin-bottom: 30px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Stile font-p per bottoni */
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+button:focus-visible {
+  outline: 2px solid var(--wp--preset--color--focus);
+  outline-offset: 4px;
+}
+/* Fieldset e legend per form */
+legend {
+  text-transform: uppercase;
+  padding: 0 5px;
+  font-weight: 600;
+  color: var(--wp--preset--color--button);
+}
+
+fieldset {
+  border: 1px solid var(--wp--preset--color--secondary);
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+/* Placeholder styling */
+::placeholder {
+  color: var(--wp--preset--color--secondary);
+}
+
+/* --------------------------------- */
+/*             SEARCH                */
+/* --------------------------------- */
+/* Rimozione stili e pulsanti di default per input di ricerca */
+input[type="search"]::-ms-accent {
+  display: none;
+  width: 0;
+  height: 0;
+}
+input[type="search"]::-ms-reveal {
+  display: none;
+  width: 0;
+  height: 0;
+}
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+}
+/* --------------------------------- */
+/*           COL SYSTEM              */
+/* --------------------------------- */
+/* Contenitore flessibile base */
+.layout-cols {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+/* Colonna principale (contenuto) */
+.layout-content {
+  flex: 1 1 75%;
+  min-width: 280px; /* aiuta a evitare il salto troppo presto */
+}
+
+/* Colonna secondaria (sidebar) */
+.layout-sidebar {
+  flex: 1 1 20%;
+  min-width: 170px;
+  max-width: 320px;
+}
+
+/* Breakpoint più ampio e transizione fluida */
+@media (max-width: 992px) {
+  .layout-cols {
+    flex-direction: column;
+  }
+
+  .layout-sidebar,
+  .layout-content {
+    max-width: 100%;
+  }
+}
+/* --------------------------------- */
+/*           GUTEMBERG CONTAINERS            */
+/* --------------------------------- */
+.alignwide {
+  max-width: var(--wp--style--global--wide-size);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.is-layout-constrained
+  > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+  max-width: var(--wp--style--global--content-size);
+}
+.has-global-padding > .alignfull {
+  margin-right: calc(var(--wp--style--root--padding-right) * -1);
+  margin-left: calc(var(--wp--style--root--padding-left) * -1);
+}
+/* --------------------------------- */
+/*        POST AJAX ANIMATION        */
+/* --------------------------------- */
+.post-fade {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.post-fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-out {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.scale-in-tl {
+  -webkit-animation: scale-in-tl 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: scale-in-tl 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+@-webkit-keyframes scale-in-tl {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    -webkit-transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
+    opacity: 1;
+  }
+}
+@keyframes scale-in-tl {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    -webkit-transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
+    opacity: 1;
+  }
+}
+.scale-out-tr {
+  -webkit-animation: scale-out-tr 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53)
+    both;
+  animation: scale-out-tr 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+}
+@-webkit-keyframes scale-out-tr {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: 100% 0%;
+    transform-origin: 100% 0%;
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    -webkit-transform-origin: 100% 0%;
+    transform-origin: 100% 0%;
+    opacity: 1;
+  }
+}
+@keyframes scale-out-tr {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: 100% 0%;
+    transform-origin: 100% 0%;
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    -webkit-transform-origin: 100% 0%;
+    transform-origin: 100% 0%;
+    opacity: 1;
+  }
+}
+
+/* --------------------------------- */
+/*           SITE BUTTONS            */
+/* --------------------------------- */
+.site-button {
+  display: inline-block;
+  padding: 12px 35px;
+  background-color: var(--wp--preset--color--button);
+  color: var(--wp--preset--color--basecolor);
+  font-size: var(--wp--preset--font-size--font-p);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: all 0.3s ease-in-out;
+}
+.site-button:hover {
+  background-color: var(--wp--preset--color--hover);
+  color: var(--wp--preset--color--basecolor);
+}
+.site-button:focus {
+  background-color: var(--wp--preset--color--hover);
+  color: var(--wp--preset--color--basecolor);
+}
+.site-button:active {
+  background-color: var(--wp--preset--color--hover);
+  color: var(--wp--preset--color--basecolor);
+}
+/* Pulsante di caricamento ajax blog */
+#load-more {
+  margin-top: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+}
+#load-more.loading {
+  opacity: 0.6;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+/* --------------------------------- */
+/*           FILTER CATEGORY         */
+/* --------------------------------- */
+#category-filter {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-bottom: 2rem;
+  list-style: none;
+  padding: 0;
+}
+
+#category-filter button {
+  padding: 0.5rem 1rem 0.5rem 0;
+  background-color: transparent;
+  color: var(--wp--preset--color--contrastcolor);
+  font-size: var(--wp--preset--font-size--font-p);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border-radius: 4px;
+}
+
+#category-filter button:hover {
+  color: var(--wp--preset--color--hover);
+}
+
+#category-filter button.is-active {
+  color: var(--wp--preset--color--hover);
+}
+@media (max-width: 992px) {
+  #category-filter {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  #category-filter button {
+    flex: 1 1 calc(50% - 0.5rem);
+  }
+}
+/* --------------------------------- */
+/*           BLOG POSTS              */
+/* --------------------------------- */
+
+.blog-posts {
+  min-height: 500px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.blog-posts .ajax-post {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 colonne per flessibilità */
+  gap: 1rem;
+  grid-auto-rows: 300px; /* altezza base */
+}
+
+.blog-posts .ajax-post article {
+  position: relative;
+  border-radius: 30px;
+  height: 100%;
+  padding: 1rem;
+  overflow: hidden;
+  transition: 0.3s ease;
+  display: flex;
+  align-items: flex-end;
+}
+.blog-posts .ajax-post article::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.3;
+}
+.blog-posts .ajax-post a:hover {
+  color: inherit;
+}
+.blog-posts .ajax-post a:focus {
+  outline: 2px solid var(--wp--preset--color--primary);
+}
+/* Esempi di variazioni "bento" */
+.post-link.bento-2 {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+.post-link-bento-1 {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.blog-posts .ajax-post .post-content {
+  position: relative;
+  z-index: 1;
+  border-radius: 30px;
+  padding: 0.5rem 1rem;
+}
+.blog-posts .ajax-post .post-title {
+  font-size: var(--wp--preset--font-size--font-2);
+  font-weight: 600;
+  color: var(--wp--preset--color--contrastcolor);
+  margin-bottom: 10px;
+}
+.blog-posts .ajax-post .post-excerpt {
+  color: var(--wp--preset--color--contrastcolor);
+}
+.blog-filters .title-sidebar {
+  font-size: var(--wp--preset--font-size--font-1);
+  color: var(--wp--preset--color--contrastcolor);
+}
+.sticky-sidebar {
+  position: sticky;
+  top: 150px;
+  align-self: flex-start;
+  background-color: var(--wp--preset--color--primary);
+  border-radius: 30px;
+  padding: 1.5rem 1rem 1.5rem 1rem;
+}
+
+@media (max-width: 992px) {
+  .sticky-sidebar {
+    position: relative;
+    top: unset;
+  }
+}
+/* --------------------------------- */
+/*         SINGLE PAGE        */
+/* --------------------------------- */
+.post-navigation {
+  border-radius: 30px;
+  background-color: var(--wp--preset--color--secondary);
+  padding: 0.5rem;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-links .content p {
+  color: var(--wp--preset--color--contrastcolor);
+}
+.nav-links button:hover a {
+  color: inherit;
+}
