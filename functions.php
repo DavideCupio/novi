@@ -141,32 +141,3 @@ function get_custom_excerpt($length = 16, $more = '...')
     // Taglia il testo al numero di parole desiderato
     return wp_trim_words($text, $length, $more);
 }
-
-
-//!------------------------
-//!------- CONTROLLO E CARICAMENTO MIME
-//!------------------------
-add_filter('wp_check_filetype_and_ext', function ($data, $file, $filename, $mimes) {
-    $ext = pathinfo($filename, PATHINFO_EXTENSION);
-    $valid_exts = ['ttf', 'otf', 'woff', 'woff2'];
-
-    if (in_array(strtolower($ext), $valid_exts)) {
-        $data['ext']  = $ext;
-        $data['type'] = $mimes[$ext] ?? 'application/octet-stream';
-    }
-
-    return $data;
-}, 10, 4);
-
-add_filter('upload_mimes', function ($mimes) {
-    if (!current_user_can('manage_options')) {
-        return $mimes;
-    }
-
-    return array_merge($mimes, [
-        'ttf'   => 'font/ttf',
-        'otf'   => 'font/otf',
-        'woff'  => 'font/woff',
-        'woff2' => 'font/woff2',
-    ]);
-});
