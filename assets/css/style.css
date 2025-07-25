@@ -757,6 +757,7 @@ body.no-scroll {
   overflow: hidden;
   touch-action: none;
 }
+
 /* --------------------------------- */
 /*          GRID COL SYSTEM              */
 /* --------------------------------- */
@@ -802,6 +803,57 @@ body.no-scroll {
 .has-global-padding > .alignfull {
   margin-right: calc(var(--wp--style--root--padding-right) * -1);
   margin-left: calc(var(--wp--style--root--padding-left) * -1);
+}
+/* Gallerie e immagini */
+.wp-caption {
+  max-width: 100%;
+  margin: 1.5em 0;
+  padding: 0;
+  text-align: center;
+}
+
+.wp-caption img {
+  width: 100%;
+  height: auto;
+  border: none;
+}
+
+.wp-caption-text {
+  font-size: 0.875rem;
+  color: var(--wp--preset--color--basecolor);
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* Galleria con didascalie */
+.gallery-caption {
+  font-size: 0.875rem;
+  color: var(--wp--preset--color--basecolor);
+  text-align: center;
+  margin-top: 0.5em;
+}
+
+/* Autore dei commenti (utile per styling) */
+.bypostauthor {
+  border-left: 3px solid var(--wp--preset--color--primary);
+  padding-left: var(--wp--preset--spacing--tiny);
+}
+
+/* Allineamenti classici */
+.aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.alignleft {
+  float: left;
+  margin-right: var(--wp--preset--spacing--small);
+  margin-bottom: var(--wp--preset--spacing--tiny);
+}
+.alignright {
+  float: right;
+  margin-left: var(--wp--preset--spacing--small);
+  margin-bottom: var(--wp--preset--spacing--tiny);
 }
 /* --------------------------------- */
 /*           CUSTOM CURSOR            */
