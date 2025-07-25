@@ -114,7 +114,7 @@ function novi_theme_customize_register($wp_customize)
         'type'        => 'hidden',
         'label'      => 'How to activate load font?',
         'section'     => 'novi_typography_section',
-        'description' => wp_kses_post(__('The font are deactivate by default.<br> For more information on how to enable font uploads, please see the <a href="https://cupiolistudio.it/novi/documentazione" target="_blank" aria-label="Novi Theme documentation" >official documentation</a>.', 'novi'))
+        'description' => wp_kses_post(__('The font are deactivate by default.<br><br> More precisely it\'s not possible to upload the fonts. <br><br> For more information on how to enable font uploads, please see the <a href="https://cupiolistudio.it/novi/documentazione" target="_blank" aria-label="Novi Theme documentation" >official documentation</a>.', 'novi'))
     ]);
 }
 add_action('customize_register', __NAMESPACE__ . '\\novi_theme_customize_register');
