@@ -38,11 +38,9 @@ function novi_setup()
     add_theme_support('post-thumbnails');
 
     // Permette di usare CSS personalizzati nell’editor Gutenberg
+    add_theme_support('wp-block-styles');
     add_theme_support('editor-styles');
     add_editor_style('assets/css/editor-style.css'); // Il file CSS dell'editor
-
-    // Abilita gli stili nativi dei blocchi WordPress
-    add_theme_support('wp-block-styles');
 
     // Supporto per i blocchi template-part (utile per l'adozione parziale del Full Site Editing)
     add_theme_support('block-template-parts');
@@ -63,6 +61,26 @@ function novi_setup()
         'style',
         'script',
     ]);
+
+    // custom background
+    add_theme_support('custom-background', array(
+        'default-color'          => 'ffffff',
+        'default-image'          => '',
+        'default-repeat'         => 'no-repeat',
+        'default-position-x'     => 'center',
+        'default-position-y'     => 'top',
+        'default-size'           => 'cover',
+        'default-attachment'     => 'scroll',
+    ));
+    //custom header
+    add_theme_support('custom-header', array(
+        'width'         => 1920,
+        'height'        => 600,
+        'flex-width'    => true,
+        'flex-height'   => true,
+        'default-image' => get_template_directory_uri() . '/assets/img/fallback.jpg',
+        'header-text'   => false,
+    ));
 
     // Caricamento traduzioni dal percorso /languages
     load_theme_textdomain('novi', get_template_directory() . '/languages');
@@ -141,3 +159,58 @@ function get_custom_excerpt($length = 16, $more = '...')
     // Taglia il testo al numero di parole desiderato
     return wp_trim_words($text, $length, $more);
 }
+//!------------------------
+//!------- GESTIONE DEGLI ESTRATTI PERSONALIZZATI
+//!------------------------
+function register_sidebars()
+{
+    register_sidebar([
+        'name' => esc_html__('Sidebar', 'novi'),
+        'id' => 'sidebar',
+        'description' => esc_html__('Sidebar principale', 'novi'),
+        'before_widget' => '<div class="widget %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h4 class="widget-title">',
+        'after_title' => '</h4>',
+    ]);
+
+    register_sidebar([
+        'name' => esc_html__('Footer left', 'novi'),
+        'id' => 'footer-left',
+        'description' => esc_html__('Widget nel footer', 'novi'),
+        'before_widget' => '<div class="footer-widget-left %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h4 class="widget-title">',
+        'after_title' => '</h4>',
+    ]);
+
+    register_sidebar([
+        'name' => esc_html__('Footer right', 'novi'),
+        'id' => 'footer_right',
+        'description' => esc_html__('Widget nel footer', 'novi'),
+        'before_widget' => '<div class="footer-widget-right %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h4 class="widget-title">',
+        'after_title' => '</h4>',
+    ]);
+}
+add_action('widgets_init', __NAMESPACE__ . '\\register_sidebars');
+
+//!------------------------
+//!------- BLOCK PATTERNS
+//!------------------------
+register_block_pattern(
+    'novi/call-to-action',
+    [
+        'title'       => __('Call to Action', 'novi'),
+        'description' => __('A centered call to action section.', 'novi'),
+        'categories'  => ['buttons'],
+        'content'     => '<!-- wp:group {"align":"full","className":"novi-cta"} -->
+        <div class="wp-block-group alignfull novi-cta">
+            <h2>Scopri il nostro prodotto</h2>
+            <p>Un breve testo persuasivo qui.</p>
+            <div class="wp-block-buttons"><div class="wp-block-button"><a class="wp-block-button__link">Scopri di più</a></div></div>
+        </div>
+        <!-- /wp:group -->',
+    ]
+);
