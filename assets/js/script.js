@@ -215,6 +215,7 @@ function initAnimations() {
 
   elementsToWatch.forEach((element) => observer.observe(element));
 }
+
 /** CUSTOM CURSOR **/
 function initCustomCursor() {
   if (document.body.classList.contains("logged-in")) return;
