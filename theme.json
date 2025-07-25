@@ -443,18 +443,6 @@
           "fontFamily": "var(--wp--preset--font-family--heading)"
         }
       },
-      "customTemplates": [
-        {
-          "name": "page-no-title",
-          "title": "Page (Full Width, No Title)",
-          "postTypes": ["page", "post"]
-        },
-        {
-          "name": "page-whit-sidebar",
-          "title": "Page whit sidebar",
-          "postTypes": ["page", "post"]
-        }
-      ],
       "templateParts": [
         {
           "name": "header",
@@ -465,11 +453,6 @@
           "name": "footer",
           "title": "Footer",
           "area": "footer"
-        },
-        {
-          "name": "sidebar",
-          "title": "Sidebar",
-          "area": "sidebar"
         }
       ]
     }
