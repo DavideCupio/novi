@@ -105,6 +105,17 @@ function novi_theme_customize_register($wp_customize)
         'label'    => __('Upload Heading Font (.woff2 or .ttf)', 'novi'),
         'section'  => 'novi_typography_section',
     ]));
+
+    // Nota MIME per font personalizzati
+    $wp_customize->add_setting('novi_typography_mime_note', [
+        'sanitize_callback' => '__return_null',
+    ]);
+    $wp_customize->add_control('novi_typography_mime_note', [
+        'type'        => 'hidden',
+        'label'      => 'How to activate load font?',
+        'section'     => 'novi_typography_section',
+        'description' => wp_kses_post(__('The font are deactivate by default.<br> For more information on how to enable font uploads, please see the <a href="https://cupiolistudio.it/novi/documentazione" target="_blank" aria-label="Novi Theme documentation" >official documentation</a>.', 'novi'))
+    ]);
 }
 add_action('customize_register', __NAMESPACE__ . '\\novi_theme_customize_register');
 
