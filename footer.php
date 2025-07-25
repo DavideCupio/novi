@@ -15,6 +15,16 @@
     aria-label="<?php esc_attr_e('Informazioni sul sito', 'novi'); ?>">
     <div class="container is-layout-constrained has-global-padding">
         <div class="main-footer alignwide">
+            <?php if (is_active_sidebar('footer-left') || is_active_sidebar('footer-right')) : ?>
+                <div class="row">
+                    <div class="footer-left">
+                        <?php dynamic_sidebar('footer-left') ?>
+                    </div>
+                    <div class="footer-right">
+                        <?php dynamic_sidebar('footer-right') ?>
+                    </div>
+                </div>
+            <?php endif; ?>
             <?php get_template_part('assets/components/scroll-top'); ?>
             <p class="footer-text">
                 <?php
