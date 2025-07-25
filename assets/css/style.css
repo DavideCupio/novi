@@ -186,14 +186,22 @@ body {
 /* --------------------------------- */
 /* Stile personalizzato per scrollbar per accessibilità */
 html::-webkit-scrollbar {
-  width: 12px;
+  width: 6px;
 }
 
 html::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 8px;
 }
+::-webkit-scrollbar {
+  width: 6px !important;
+  height: 100% !important;
+}
 
+::-webkit-scrollbar-thumb {
+  background-color: #00e5ff7b;
+  border-radius: 8px;
+}
 /* --------------------------------- */
 /*          ACCESSIBILITY             */
 /* --------------------------------- */
@@ -1240,27 +1248,29 @@ body.no-scroll {
   justify-content: center;
   will-change: padding, max-height;
 }
-
+.header-navigation ::-webkit-scrollbar {
+  width: 6px !important;
+  height: 6px !important;
+}
 .header-navigation.is-open {
   max-height: 80vh;
-  padding: var(--wp--preset--spacing--large) 0;
+  padding: var(--wp--preset--spacing--large) 0 0 0;
   overflow: scroll;
 }
-
+.header-navigation.no-menu.is-open {
+  overflow: hidden;
+}
 .header-navigation__list {
-  list-style: none;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 16px;
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 .header-navigation.is-open .header-navigation__list {
   opacity: 1;
   transform: translateY(0);
+  overflow-x: scroll;
+  padding-bottom: var(--wp--preset--spacing--large);
 }
 
 .header-navigation__list li {
@@ -1274,6 +1284,7 @@ body.no-scroll {
 }
 
 .header-navigation__list li a {
+  white-space: nowrap;
   display: inline-flex;
   font-family: var(--wp--preset--font-family--heading);
   font-size: var(--wp--preset--font-size--font-4);

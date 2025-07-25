@@ -34,16 +34,16 @@
                             $custom_logo_id = get_theme_mod('custom_logo');
                             $logo = wp_get_attachment_image_src($custom_logo_id, 'large');
                         ?>
-                            <a href="<?php echo esc_url(home_url('/')); ?>" title="<?php bloginfo('name'); ?>"
-                                class="brand">
-                                <img src="<?php echo esc_url($logo[0]); ?>"
-                                    alt="<?php echo esc_attr(get_bloginfo('name')); ?>">
-                            </a>
+                        <a href="<?php echo esc_url(home_url('/')); ?>" title="<?php bloginfo('name'); ?>"
+                            class="brand">
+                            <img src="<?php echo esc_url($logo[0]); ?>"
+                                alt="<?php echo esc_attr(get_bloginfo('name')); ?>">
+                        </a>
                         <?php else : ?>
-                            <a href="<?php echo esc_url(home_url('/')); ?>" class="site-title">
-                                <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/logo-novi.png'); ?>"
-                                    alt="<?php echo esc_attr(get_bloginfo('name')); ?>">
-                            </a>
+                        <a href="<?php echo esc_url(home_url('/')); ?>" class="site-title">
+                            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/logo-novi.png'); ?>"
+                                alt="<?php echo esc_attr(get_bloginfo('name')); ?>">
+                        </a>
                         <?php endif; ?>
                     </div>
 
@@ -54,17 +54,29 @@
                     </button><!-- burger-menu -->
 
                 </div><!-- main-header -->
-
+                <?php if (has_nav_menu('header-menu')) : ?>
                 <nav id="header-menu" class="header-navigation" role="navigation"
                     aria-label='<?php _e('Main menu ', 'novi'); ?>' aria-expanded="false" aria-hidden="true">
                     <h2 class="screen-reader-text"><?php _e('Main menu ', 'novi'); ?></h2>
                     <?php
-                    wp_nav_menu([
-                        'theme_location' => 'header-menu',
-                        'container'      => false,
-                        'items_wrap'     => '<ul class="header-navigation__list">%3$s</ul>',
-                    ]);
-                    ?>
+                        wp_nav_menu([
+                            'theme_location' => 'header-menu',
+                            'container'      => 'header-navigation',
+                            'items_wrap'     => '<ul class="header-navigation__list">%3$s</ul>',
+                        ]);
+                        ?>
+                </nav><!-- header-navigation -->
+                <?php else: ?>
+                <nav id="header-menu" class="header-navigation no-menu" role="navigation"
+                    aria-label='<?php _e('Main menu ', 'novi'); ?>' aria-expanded="false" aria-hidden="true">
+                    <?php
+                        wp_nav_menu([
+                            'container'      => 'false',
+                            'items_wrap'     => '<ul class="header-navigation__list">%3$s</ul>',
+                        ]);
+                        ?>
+                </nav>
+                <?php endif; ?>
             </div><!-- wrap-navigation -->
         </div><!-- container -->
     </header><!-- site-header -->
