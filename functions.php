@@ -160,7 +160,7 @@ function get_custom_excerpt($length = 16, $more = '...')
     return wp_trim_words($text, $length, $more);
 }
 //!------------------------
-//!------- GESTIONE DEGLI ESTRATTI PERSONALIZZATI
+//!------- WIDGET
 //!------------------------
 function register_sidebars()
 {
