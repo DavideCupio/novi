@@ -1088,7 +1088,8 @@ body.no-scroll {
 .pagination-item:last-child {
   margin-left: auto;
 }
-.pagination-item .page-numbers {
+.pagination-item .page-numbers,
+.pagination-item .site-button {
   display: inline-flex;
   white-space: nowrap;
   padding: 12px 24px;
