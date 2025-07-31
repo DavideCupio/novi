@@ -23,7 +23,7 @@ get_header();
         <?php
         while (have_posts()) :
             the_post();
-            echo '<div class="is-layout-constrained has-global-padding">';
+            echo '<div class="is-layout-constrained has-global-padding entry-content">';
             the_content();
             echo '</div>';
         endwhile;

@@ -6,23 +6,13 @@ if (! defined('ABSPATH')) {
     exit; // Sicurezza: blocca l'accesso diretto ai file PHP
 }
 
-// ✅ Definisce la costante della versione tema, usata per versionare CSS/JS (utile per il cache busting)
+// Definisce la costante della versione tema, usata per versionare CSS/JS (utile per il cache busting)
 if (!defined('NOVI_VERSION')) {
     define('NOVI_VERSION', \wp_get_theme()->get('Version'));
 }
 
-// ✅ Include file esterni del tema
-require_once get_template_directory() . '/inc/customizer.php';
 
-$dynamic_css_path = get_template_directory() . '/inc/dynamic-css.php';
-if (file_exists($dynamic_css_path)) {
-    require_once $dynamic_css_path;
-}
-
-include(get_template_directory() . '/inc/gutemberg.php');
-
-
-// ✅ Funzione di setup del tema (registrazione supporti, menu, traduzioni ecc.)
+// Funzione di setup del tema (registrazione supporti, menu, traduzioni ecc.)
 function novi_setup()
 {
     // Titolo automatico gestito da WordPress
@@ -85,7 +75,7 @@ function novi_setup()
     // Caricamento traduzioni dal percorso /languages
     load_theme_textdomain('novi', get_template_directory() . '/languages');
 
-    // ✅ Registrazione del menu principale
+    //  Registrazione del menu principale
     register_nav_menus([
         'header-menu' => __('Menu principale', 'novi'),
     ]);
@@ -93,18 +83,18 @@ function novi_setup()
 add_action('after_setup_theme', __NAMESPACE__ . '\\novi_setup');
 
 
-// ✅ Caricamento degli script e degli stili del tema nel frontend
+//  Caricamento degli script e degli stili del tema nel frontend
 function enqueue_scripts()
 {
     $version = defined('NOVI_VERSION') ? NOVI_VERSION : \wp_get_theme()->get('Version');
 
-    // ✅ CSS principale del tema
+    //  CSS principale del tema
     \wp_enqueue_style('novi-style', \get_stylesheet_directory_uri() . '/assets/css/style.css', [], $version);
 
-    // ✅ JS principale del tema
+    //  JS principale del tema
     \wp_enqueue_script('novi-script', \get_stylesheet_directory_uri() . '/assets/js/script.js', ['jquery'], $version, true);
 
-    // ✅ Script per risposte ai commenti (solo se i commenti sono abilitati e si è in una singola pagina/post)
+    //  Script per risposte ai commenti (solo se i commenti sono abilitati e si è in una singola pagina/post)
     if (\is_singular() && \comments_open() && \get_option('thread_comments')) {
         \wp_enqueue_script('comment-reply');
     }
@@ -112,7 +102,18 @@ function enqueue_scripts()
 \add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_scripts');
 
 
-// ✅ Aggiunge tabindex ai link del menu per migliorare l'accessibilità
+// Include file esterni del tema
+require_once get_template_directory() . '/inc/customizer.php';
+
+$dynamic_css_path = get_template_directory() . '/inc/dynamic-css.php';
+if (file_exists($dynamic_css_path)) {
+    require_once $dynamic_css_path;
+}
+
+include(get_template_directory() . '/inc/gutemberg.php');
+
+
+//  Aggiunge tabindex ai link del menu per migliorare l'accessibilità
 function add_tabindex_link_menu($atts, $item, $args)
 {
     $atts['tabindex'] = '0';
