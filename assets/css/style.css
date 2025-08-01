@@ -1293,7 +1293,6 @@ body.no-scroll {
    MAIN NAVIGATION BASE
 ------------------------------------ */
 /* NAV MENU CON ANIMAZIONE FLUIDA */
-/* NAV MENU CON ANIMAZIONE FLUIDA */
 .header-navigation {
   width: 100%;
   clip-path: inset(0 0 100% 0);
@@ -1319,7 +1318,6 @@ body.no-scroll {
   height: 80vh;
 }
 
-/* LISTA PRINCIPALE ORIZZONTALE */
 /* LISTA PRINCIPALE ORIZZONTALE */
 .header-navigation__list {
   display: flex;
@@ -1495,6 +1493,10 @@ body.no-scroll {
 .page-description span {
   color: var(--wp--preset--color--button);
   font-weight: var(--wp--custom--font-weight--medium);
+}
+.entry-meta {
+  color: var(--wp--preset--color--contrastcolor);
+  font-weight: var(--wp--custom--font-weight--semi-bold);
 }
 .page-content {
   min-height: 500px;
