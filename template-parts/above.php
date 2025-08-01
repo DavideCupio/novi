@@ -5,18 +5,11 @@ function novi_get_page_header_background($id = null)
     return $image ? $image : get_template_directory_uri() . '/assets/img/fallback.jpg';
 }
 ?>
+
 <?php if (is_front_page()) : ?>
     <?php
-
-    // Se esiste l'immagine dell'header impostata nel Customizer, usala
-    if (get_header_image()) {
-        $background_image = get_header_image();
-    } else {
-        // Altrimenti usa la funzione custom del tema
-        $background_image = novi_get_page_header_background();
-    }
+    $background_image = get_header_image() ? get_header_image() : novi_get_page_header_background();
     ?>
-
     <section class="page-header alignwide animation fade" aria-labelledby="page-header-title"
         style="background-image: url('<?php echo esc_url($background_image); ?>'); background-size: cover; background-position: center; background-repeat: no-repeat;">
 
@@ -26,28 +19,27 @@ function novi_get_page_header_background($id = null)
             </div>
 
             <div class="entry-page-header">
-                <h1 id="page-header-title" class="page-title"><?php the_title(); ?></h1>
+                <h1 id="page-header-title" class="page-title"><?php echo esc_html(get_the_title()); ?></h1>
 
                 <?php
-                $novi_cta_title = esc_html(get_theme_mod('novi__home__cta__title', 'Call To Action'));
-                $novi_cta_link = esc_url(get_theme_mod('novi__home__cta__link', '#'));
+                $novi_cta_title = get_theme_mod('novi__home__cta__title', 'Call To Action');
+                $novi_cta_link = get_theme_mod('novi__home__cta__link', '#');
 
                 if ($novi_cta_title && $novi_cta_link) : ?>
                     <div class="novi-cta">
-                        <a href="<?php echo $novi_cta_link; ?>" class="site-button cta-button">
-                            <?php echo $novi_cta_title; ?>
+                        <a href="<?php echo esc_url($novi_cta_link); ?>" class="site-button cta-button">
+                            <?php echo esc_html($novi_cta_title); ?>
                         </a>
                     </div>
                 <?php endif; ?>
             </div>
         </div>
     </section>
+
 <?php elseif (is_404()) : ?>
-    <?php
-    $background_image = novi_get_page_header_background();
-    ?>
-    <section class="page-header page-header-full alignwide animation fade" aria-labelledby="page-header-title" style="background-image: url('<?php echo esc_url($background_image); ?>'); background-size: cover;
-        background-position: center; background-repeat: no-repeat;">
+    <?php $background_image = novi_get_page_header_background(); ?>
+    <section class="page-header page-header-full alignwide animation fade" aria-labelledby="page-header-title"
+        style="background-image: url('<?php echo esc_url($background_image); ?>'); background-size: cover; background-position: center; background-repeat: no-repeat;">
         <div class="page-inner container has-global-padding">
             <div class="page-description">
                 <?php if (function_exists('rank_math_the_breadcrumbs')) rank_math_the_breadcrumbs(); ?>
@@ -58,26 +50,25 @@ function novi_get_page_header_background($id = null)
                 <p id="page-header-paragraph" class="page-paragraph">
                     <?php echo esc_html__('Sorry, but the page you were looking for could not be found.', 'novi'); ?></p>
                 <a href="<?php echo esc_url(home_url('/')); ?>" class="site-button"
-                    aria-label="<?php esc_attr_e('Back to homepage', 'novi'); ?>">
-                    <?php esc_html_e('Back Home', 'novi'); ?>
+                    aria-label="<?php echo esc_attr__('Back to homepage', 'novi'); ?>">
+                    <?php echo esc_html__('Back Home', 'novi'); ?>
                 </a>
             </div>
         </div>
     </section>
+
 <?php elseif (is_single() || is_singular() || is_page()) : ?>
-    <?php
-    $background_image = novi_get_page_header_background();
-    ?>
-    <section class="page-header alignwide animation fade" aria-labelledby="page-header-title" style="background-image: url('<?php echo esc_url($background_image); ?>'); background-size: cover;
-    background-position: center; background-repeat: no-repeat;">
+    <?php $background_image = novi_get_page_header_background(); ?>
+    <section class="page-header alignwide animation fade" aria-labelledby="page-header-title"
+        style="background-image: url('<?php echo esc_url($background_image); ?>'); background-size: cover; background-position: center; background-repeat: no-repeat;">
         <div class="page-inner container has-global-padding">
             <div class="page-description">
                 <?php if (function_exists('rank_math_the_breadcrumbs')) rank_math_the_breadcrumbs(); ?>
             </div>
             <div class="entry-page-header">
-                <h1 id="page-header-title" class="page-title"><?php the_title(); ?></h1>
+                <h1 id="page-header-title" class="page-title"><?php echo esc_html(get_the_title()); ?></h1>
                 <div class="entry-meta">
-                    <span class="posted-on"><?php echo get_the_date(); ?></span>
+                    <span class="posted-on"><?php echo esc_html(get_the_date()); ?></span>
                     <span class="posted-in"><?php the_category(', '); ?></span>
                 </div>
             </div>
@@ -91,29 +82,30 @@ function novi_get_page_header_background($id = null)
             </div>
         </div>
     </section>
+
 <?php elseif (is_home() || is_archive()) : ?>
     <?php
     $blog_page_id = get_option('page_for_posts');
     $background_image = novi_get_page_header_background($blog_page_id);
     ?>
-    <section class="page-header alignwide animation fade" aria-label="<?php echo esc_attr(get_the_title($blog_page_id)); ?>"
+    <section class="page-header alignwide animation fade"
+        aria-label="<?php echo esc_attr(sprintf(__('Section: %s', 'novi'), get_the_title($blog_page_id))); ?>"
         style="background-image: url('<?php echo esc_url($background_image); ?>'); background-size: cover; background-position: center; background-repeat: no-repeat;">
         <div class="page-inner container has-global-padding">
             <div class="page-description">
                 <?php if (function_exists('rank_math_the_breadcrumbs')) rank_math_the_breadcrumbs(); ?>
             </div>
-            <h1 id="page-header-title" class="page-title"><?php echo get_the_title($blog_page_id); ?></h1>
+            <h1 id="page-header-title" class="page-title"><?php echo esc_html(get_the_title($blog_page_id)); ?></h1>
         </div>
     </section>
+
 <?php elseif (is_search()) : ?>
-    <?php
-    $background_image = novi_get_page_header_background();
-    ?>
-    <section class="page-header alignwide animation fade" aria-labelledby="page-header-title" style="background-image: url('<?php echo esc_url($background_image); ?>'); background-size: cover;
-    background-position: center; background-repeat: no-repeat;">
+    <?php $background_image = novi_get_page_header_background(); ?>
+    <section class="page-header alignwide animation fade" aria-labelledby="page-header-title"
+        style="background-image: url('<?php echo esc_url($background_image); ?>'); background-size: cover; background-position: center; background-repeat: no-repeat;">
         <div class="page-inner container has-global-padding is-layout-constrained">
             <h1 id="page-header-title" class="page-title">
-                <?php esc_html_e('Results for: ', 'novi'); ?><?php echo get_search_query(); ?>
+                <?php echo esc_html__('Results for: ', 'novi'); ?><?php echo esc_html(get_search_query()); ?>
             </h1>
         </div>
     </section>
