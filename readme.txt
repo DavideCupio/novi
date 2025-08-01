@@ -1,4 +1,4 @@
-=== Novi Block Theme ===
+=== Novi Hibryd Theme ===
 Contributors: Cupioli Studio  
 Requires at least: 6.7  
 Tested up to: 6.7  
@@ -6,7 +6,7 @@ Requires PHP: 7.3
 Stable tag: 1.0.0  
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
-Tags: custom-colors, custom-fonts, accessibility-ready, light, fast  
+Tags: custom-colors, custom-fonts, light, fast  
 Text Domain: novi  
 
 == Description ==
@@ -18,7 +18,7 @@ Struttura leggera, animazioni CSS, layout responsive e supporto ai pattern.
 == Features ==
 
 - Layout flessibili e template personalizzati  
-- Supporto a block-patterns e block-variations  
+- Supporto a Hibryd-patterns e Hibryd-variations  
 - Personalizzazione di colori, font e spaziature da theme.json  
 - Menu responsive con animazione `clip-path` + `focus trap`  
 - Scroll orizzontale fluido su dispositivi touch  
@@ -47,6 +47,5 @@ Tutte le immagini, icone e loghi inclusi sono creazioni tramite AI dell'autore d
 
 1. Carica la cartella del tema in `/wp-content/themes/novi/`  
 2. Attiva il tema da “Aspetto > Temi”  
-3. Personalizza con l'Editor del sito
 
 == Changelog ==
