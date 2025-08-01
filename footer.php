@@ -26,7 +26,6 @@
                 </div>
             <?php endif; ?>
             <?php get_template_part('assets/components/scroll-top'); ?>
-            <?php get_template_part('assets/components/accessibility-fonts-control'); ?>
             <p class="footer-text">
                 <?php
                 printf(
