@@ -20,9 +20,6 @@ get_header(); ?>
     </div>
     <div class="page-content container">
 
-        <h1><?php _e('404 - Page Not Found', 'novi'); ?></h1>
-        <p><?php _e('Sorry, but the page you were looking for could not be found.', 'novi'); ?></p>
-
     </div>
 </main>
 

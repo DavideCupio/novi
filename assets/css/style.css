@@ -1451,6 +1451,10 @@ body.no-scroll {
   box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 1), 0 0 0 #00000061,
     3px 4px 3px #00000061;
 }
+.page-header-full {
+  min-height: 80vh;
+  min-height: 80dvh;
+}
 .page-header::before {
   content: "";
   position: absolute;
@@ -1468,6 +1472,11 @@ body.no-scroll {
 }
 .page-title {
   font-size: var(--wp--preset--font-size--font-6);
+  color: var(--wp--preset--color--contrastcolor);
+  margin-bottom: 24px;
+}
+.page-paragraph {
+  font-size: var(--wp--preset--font-size--font-2);
   color: var(--wp--preset--color--contrastcolor);
   margin-bottom: 24px;
 }

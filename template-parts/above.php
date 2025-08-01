@@ -42,18 +42,25 @@ function novi_get_page_header_background($id = null)
             </div>
         </div>
     </section>
-<?php elseif (is_page()) : ?>
+<?php elseif (is_404()) : ?>
     <?php
     $background_image = novi_get_page_header_background();
     ?>
-    <section class="page-header alignwide animation fade" aria-labelledby="page-header-title" style="background-image: url('<?php echo esc_url($background_image); ?>'); background-size: cover;
+    <section class="page-header page-header-full alignwide animation fade" aria-labelledby="page-header-title" style="background-image: url('<?php echo esc_url($background_image); ?>'); background-size: cover;
         background-position: center; background-repeat: no-repeat;">
         <div class="page-inner container has-global-padding">
             <div class="page-description">
                 <?php if (function_exists('rank_math_the_breadcrumbs')) rank_math_the_breadcrumbs(); ?>
             </div>
             <div class="entry-page-header">
-                <h1 id="page-header-title" class="page-title"><?php the_title(); ?></h1>
+                <h1 id="page-header-title" class="page-title">
+                    <?php echo esc_html__('Oops! That page can’t be found.', 'novi'); ?></h1>
+                <p id="page-header-paragraph" class="page-paragraph">
+                    <?php echo esc_html__('Sorry, but the page you were looking for could not be found.', 'novi'); ?></p>
+                <a href="<?php echo esc_url(home_url('/')); ?>" class="site-button"
+                    aria-label="<?php esc_attr_e('Back to homepage', 'novi'); ?>">
+                    <?php esc_html_e('Back Home', 'novi'); ?>
+                </a>
             </div>
         </div>
     </section>
