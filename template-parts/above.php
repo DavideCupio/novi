@@ -62,17 +62,7 @@ function novi_get_page_header_background($id = null)
     <section class="page-header alignwide animation fade" aria-labelledby="page-header-title"
         style="background-image: url('<?php echo esc_url($background_image); ?>'); background-size: cover; background-position: center; background-repeat: no-repeat;">
         <div class="page-inner container has-global-padding">
-            <div class="page-description">
-                <?php if (function_exists('rank_math_the_breadcrumbs')) rank_math_the_breadcrumbs(); ?>
-            </div>
-            <div class="entry-page-header">
-                <h1 id="page-header-title" class="page-title"><?php echo esc_html(get_the_title()); ?></h1>
-                <div class="entry-meta">
-                    <span class="posted-on"><?php echo esc_html(get_the_date()); ?></span>
-                    <span class="posted-in"><?php the_category(', '); ?></span>
-                </div>
-            </div>
-            <div class="site tags">
+            <div class="site-tags">
                 <?php
                 $tags_list = get_the_tag_list('<ul class="post-tags"><li>', '</li><li>', '</li></ul>');
                 if ($tags_list) {
@@ -80,6 +70,26 @@ function novi_get_page_header_background($id = null)
                 }
                 ?>
             </div>
+            <?php if (function_exists('rank_math_the_breadcrumbs')) : ?>
+                <div class="page-description">
+                    <?php rank_math_the_breadcrumbs(); ?>
+                </div>
+            <?php endif; ?>
+            <div class="entry-page-header">
+                <h1 id="page-header-title" class="page-title"><?php echo esc_html(get_the_title()); ?></h1>
+                <div class="entry-meta">
+                    <span class="posted-on"><?php echo esc_html(get_the_date()); ?></span>
+                    <span>-</span>
+                    <span class="posted-in"><?php the_category(', '); ?></span>
+                </div>
+            </div>
+
+            <?php if (function_exists('\Novi\Theme\novi_post_reading_time')) : ?>
+                <div class="site-reading-time">
+                    <p class="reading-time"><?php echo \Novi\Theme\novi_post_reading_time(); ?></p>
+                </div>
+            <?php endif; ?>
+
         </div>
     </section>
 

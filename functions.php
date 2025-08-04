@@ -140,6 +140,31 @@ function custom_archive_title($title)
 }
 add_filter('get_the_archive_title', __NAMESPACE__ . '\\custom_archive_title');
 
+//!------------------------
+//!------- READING TIME POSTS
+//!------------------------
+function novi_post_reading_time($post_id = null)
+{
+    $post_id = $post_id ?: get_the_ID();
+    $content = get_post_field('post_content', $post_id);
+
+    if (empty($content)) {
+        return esc_html__('Tempo di lettura non disponibile', 'novi');
+    }
+
+    $word_count = str_word_count(strip_tags(strip_shortcodes($content)));
+    $reading_speed = 200; // parole al minuto
+    $minutes = ceil($word_count / $reading_speed);
+
+    if ($minutes < 1) {
+        $minutes = 1;
+    }
+
+    return sprintf(
+        _n('%d minuto di lettura', '%d minuti di lettura', $minutes, 'novi'),
+        $minutes
+    );
+}
 
 //!------------------------
 //!------- GESTIONE DEGLI ESTRATTI PERSONALIZZATI

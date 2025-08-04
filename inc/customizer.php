@@ -14,20 +14,6 @@ function novi_custom_logo_setup()
 add_action('after_setup_theme', __NAMESPACE__ . '\\novi_custom_logo_setup');
 
 
-add_filter('render_block_core/site-logo', 'novi_site_logo_fallback', 10, 2);
-
-function novi_site_logo_fallback($block_content, $block)
-{
-    if (has_custom_logo()) {
-        return $block_content;
-    }
-
-    // Mostra il nome del sito come fallback
-    $site_title = get_bloginfo('name');
-    $home_url = esc_url(home_url('/'));
-
-    return '<a href="' . $home_url . '" class="site-title-fallback">' . esc_html($site_title) . '</a>';
-}
 
 /** Register customizer settings */
 function novi_theme_customize_register($wp_customize)
