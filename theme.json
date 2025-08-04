@@ -100,7 +100,7 @@
       "link": true
     },
     "shadow": {
-      "defaultPresets": false,
+      "defaultPresets": true,
       "presets": [
         {
           "name": "light",
@@ -120,7 +120,7 @@
       ]
     },
     "spacing": {
-      "defaultSpacingSizes": false,
+      "defaultSpacingSizes": true,
       "spacingScale": {
         "steps": 0
       },
@@ -188,8 +188,8 @@
       }
     },
     "typography": {
-      "defaultFontSizes": false,
-      "dropCap": false,
+      "defaultFontSizes": true,
+      "dropCap": true,
       "fluid": true,
       "fontFamilies": [
         {
