@@ -10,7 +10,7 @@ if (!defined('NOVI_VERSION')) {
 }
 
 // Funzione di setup del tema (registrazione supporti, menu, traduzioni ecc.)
-function novi_setup()
+function novi_setup_theme()
 {
     add_theme_support('title-tag');
     add_theme_support('automatic-feed-links');
@@ -58,7 +58,7 @@ function novi_setup()
         'header-menu' => __('Menu principale', 'novi'),
     ]);
 }
-add_action('after_setup_theme', 'novi_setup');
+add_action('after_setup_theme', 'novi_setup_theme');
 
 // Caricamento degli script e degli stili del tema nel frontend
 function enqueue_scripts()
@@ -75,7 +75,7 @@ function enqueue_scripts()
 add_action('wp_enqueue_scripts', 'enqueue_scripts');
 
 // Inclusione dei file esterni
-function require_theme_files()
+function novi_require_theme_files()
 {
     require_once get_template_directory() . '/inc/customizer.php';
     $dynamic_css_path = get_template_directory() . '/inc/dynamic-css.php';
@@ -84,15 +84,15 @@ function require_theme_files()
     }
     include get_template_directory() . '/inc/gutemberg.php';
 }
-add_action('after_setup_theme', 'require_theme_files');
+add_action('after_setup_theme', 'novi_require_theme_files');
 
 // Aggiunge tabindex ai link del menu per migliorare l'accessibilità
-function add_tabindex_link_menu($atts, $item, $args)
+function novi_add_tabindex_link_menu($atts, $item, $args)
 {
     $atts['tabindex'] = '0';
     return $atts;
 }
-add_filter('nav_menu_link_attributes', 'add_tabindex_link_menu', 10, 3);
+add_filter('nav_menu_link_attributes', 'novi_add_tabindex_link_menu', 10, 3);
 
 // Titoli degli archivi personalizzati
 function novi_custom_archive_title($title)
