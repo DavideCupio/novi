@@ -1,4 +1,4 @@
-=== Novi Hibryd Theme ===
+=== Novi Hybrid Theme ===
 Contributors: Cupioli Studio  
 Requires at least: 6.7  
 Tested up to: 6.7  
@@ -11,41 +11,41 @@ Text Domain: novi
 
 == Description ==
 
-**Novi** è un tema WordPress moderno, ibrido, basato su `theme.json`..  
-Progettato per performance elevate e massima flessibilità, include tipografie personalizzabili e palette colori.  
-Struttura leggera, animazioni CSS, layout responsive e supporto ai pattern.
+**Novi** is a modern, hybrid WordPress theme powered by `theme.json`.  
+Designed for high performance and maximum flexibility, it includes customizable typography and color palettes.  
+Lightweight structure, CSS animations, responsive layout, and support for block patterns.
 
 == Features ==
 
-- Layout flessibili e template personalizzati  
-- Supporto a Hibryd-patterns e Hibryd-variations  
-- Personalizzazione di colori, font e spaziature da theme.json  
-- Menu responsive con animazione `clip-path` + `focus trap`  
-- Scroll orizzontale fluido su dispositivi touch  
-- Caricamento condizionale degli asset  
-- Accessibilità migliorata (ARIA + tastiera)  
-- Template page-blank
+- Flexible layouts and custom templates  
+- Support for hybrid patterns and hybrid variations  
+- Customization of colors, fonts, and spacing via theme.json  
+- Responsive menu with `clip-path` animation + `focus trap`  
+- Smooth horizontal scrolling on touch devices  
+- Conditional asset loading  
+- Improved accessibility (ARIA + keyboard)  
+- Blank page template
 
 == Copyright ==
 
-Novi WordPress Theme, (C) 2024-2025 Cupioli Studio di Cupioli Davide
-Distribuito sotto licenza GNU GPL v2 o successive.  
+Novi WordPress Theme, (C) 2024–2025 Cupioli Studio by Cupioli Davide  
+Distributed under the GNU GPL v2 or later license.  
 
 == Fonts ==
 
-- Neco (by Indian Type Foundry, Fontshare — Free for commercial use)
-- Pally (by Indian Type Foundry, Fontshare — Free for commercial use)
+- Neco (by Indian Type Foundry, Fontshare — Free for commercial use)  
+- Pally (by Indian Type Foundry, Fontshare — Free for commercial use)  
 
-I font sono distribuiti tramite Fontshare con licenza gratuita e uso commerciale consentito.  
-Per i termini completi: https://www.fontshare.com/license
+Fonts are distributed via Fontshare with a free license for commercial use.  
+Full license terms: https://www.fontshare.com/license
 
 == Images ==
 
-Tutte le immagini, icone e loghi inclusi sono creazioni tramite AI dell'autore del tema.
+All images, icons, and logos included in the theme were generated using AI tools by the theme author.
 
 == Installation ==
 
-1. Carica la cartella del tema in `/wp-content/themes/novi/`  
-2. Attiva il tema da “Aspetto > Temi”  
+1. Upload the theme folder to `/wp-content/themes/novi/`  
+2. Activate the theme under “Appearance > Themes”  
 
 == Changelog ==
