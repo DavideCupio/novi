@@ -1,6 +1,6 @@
 <?php
-//Template Name: Blank Page
-//Description: A blank page template without header and footer.
+// Template Name: Page Blank
+// Description: A blank page template without header and footer.
 ?>
 <main id="main-content" role="main" <?php post_class('site-main'); ?>>
     <div class="is-layout-constrained has-global-padding">
