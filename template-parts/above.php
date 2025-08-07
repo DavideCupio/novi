@@ -84,9 +84,9 @@ function novi_get_page_header_background($id = null)
                 </div>
             </div>
 
-            <?php if (function_exists('\Novi\Theme\novi_post_reading_time')) : ?>
+            <?php if (function_exists('novi_post_reading_time')) : ?>
                 <div class="site-reading-time">
-                    <p class="reading-time"><?php echo \Novi\Theme\novi_post_reading_time(); ?></p>
+                    <p class="reading-time"><?php echo novi_post_reading_time(); ?></p>
                 </div>
             <?php endif; ?>
 

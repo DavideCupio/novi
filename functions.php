@@ -1,7 +1,5 @@
 <?php
 
-namespace Novi\Theme;
-
 if (! defined('ABSPATH')) {
     exit; // Sicurezza: blocca l'accesso diretto ai file PHP
 }
@@ -60,7 +58,7 @@ function novi_setup()
         'header-menu' => __('Menu principale', 'novi'),
     ]);
 }
-add_action('after_setup_theme', __NAMESPACE__ . '\\novi_setup');
+add_action('after_setup_theme', 'novi_setup');
 
 // Caricamento degli script e degli stili del tema nel frontend
 function enqueue_scripts()
@@ -74,7 +72,7 @@ function enqueue_scripts()
         wp_enqueue_script('comment-reply');
     }
 }
-add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_scripts');
+add_action('wp_enqueue_scripts', 'enqueue_scripts');
 
 // Inclusione dei file esterni
 function require_theme_files()
@@ -86,7 +84,7 @@ function require_theme_files()
     }
     include get_template_directory() . '/inc/gutemberg.php';
 }
-add_action('after_setup_theme', __NAMESPACE__ . '\\require_theme_files');
+add_action('after_setup_theme', 'require_theme_files');
 
 // Aggiunge tabindex ai link del menu per migliorare l'accessibilità
 function add_tabindex_link_menu($atts, $item, $args)
@@ -94,7 +92,7 @@ function add_tabindex_link_menu($atts, $item, $args)
     $atts['tabindex'] = '0';
     return $atts;
 }
-add_filter('nav_menu_link_attributes', __NAMESPACE__ . '\\add_tabindex_link_menu', 10, 3);
+add_filter('nav_menu_link_attributes', 'add_tabindex_link_menu', 10, 3);
 
 // Titoli degli archivi personalizzati
 function custom_archive_title($title)
@@ -106,7 +104,7 @@ function custom_archive_title($title)
     }
     return $title;
 }
-add_filter('get_the_archive_title', __NAMESPACE__ . '\\custom_archive_title');
+add_filter('get_the_archive_title', 'custom_archive_title');
 
 // Calcolo tempo di lettura
 function novi_post_reading_time($post_id = null)
@@ -128,7 +126,7 @@ function novi_post_reading_time($post_id = null)
 }
 
 // Estratti personalizzati
-function get_custom_excerpt($length = 16, $more = '...')
+function novi_get_custom_excerpt($length = 16, $more = '...')
 {
     $text = get_the_excerpt();
 
@@ -143,7 +141,7 @@ function get_custom_excerpt($length = 16, $more = '...')
 }
 
 // Registrazione delle sidebar
-function register_sidebars()
+function novi_register_sidebars()
 {
     register_sidebar([
         'name' => esc_html__('Sidebar', 'novi'),
@@ -175,7 +173,7 @@ function register_sidebars()
         'after_title' => '</h4>',
     ]);
 }
-add_action('widgets_init', __NAMESPACE__ . '\\register_sidebars');
+add_action('widgets_init', 'novi_register_sidebars');
 
 // Registrazione dei block pattern
 function register_novi_block_patterns()
@@ -196,4 +194,4 @@ function register_novi_block_patterns()
         ]
     );
 }
-add_action('init', __NAMESPACE__ . '\\register_novi_block_patterns');
+add_action('init', 'register_novi_block_patterns');

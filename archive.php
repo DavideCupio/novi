@@ -66,7 +66,7 @@ get_header(); ?>
 
                             <div class="post-content">
                                 <h3 class="post-title"><?php the_title(); ?></h3>
-                                <p class="post-excerpt"><?php echo \Novi\Theme\get_custom_excerpt(); ?></p>
+                                <p class="post-excerpt"><?php echo novi_get_custom_excerpt(); ?></p>
                             </div>
 
                         </a>
