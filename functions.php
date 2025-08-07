@@ -65,8 +65,8 @@ function enqueue_scripts()
 {
     $version = defined('NOVI_VERSION') ? NOVI_VERSION : wp_get_theme()->get('Version');
 
-    wp_enqueue_style('novi-style', get_stylesheet_directory_uri() . '/assets/css/style.css', [], $version);
-    wp_enqueue_script('novi-script', get_stylesheet_directory_uri() . '/assets/js/script.js', ['jquery'], $version, true);
+    wp_enqueue_style('novi-main-style', get_stylesheet_directory_uri() . '/assets/css/style.css', [], $version);
+    wp_enqueue_script('novi-main-script', get_stylesheet_directory_uri() . '/assets/js/script.js', ['jquery'], $version, true);
 
     if (is_singular() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
@@ -95,7 +95,7 @@ function add_tabindex_link_menu($atts, $item, $args)
 add_filter('nav_menu_link_attributes', 'add_tabindex_link_menu', 10, 3);
 
 // Titoli degli archivi personalizzati
-function custom_archive_title($title)
+function novi_custom_archive_title($title)
 {
     if (is_home()) {
         $title = 'Blog';
@@ -104,7 +104,7 @@ function custom_archive_title($title)
     }
     return $title;
 }
-add_filter('get_the_archive_title', 'custom_archive_title');
+add_filter('get_the_archive_title', 'novi_custom_archive_title');
 
 // Calcolo tempo di lettura
 function novi_post_reading_time($post_id = null)
@@ -176,7 +176,7 @@ function novi_register_sidebars()
 add_action('widgets_init', 'novi_register_sidebars');
 
 // Registrazione dei block pattern
-function register_novi_block_patterns()
+function novi_register_block_patterns()
 {
     register_block_pattern(
         'novi/call-to-action',
@@ -194,4 +194,4 @@ function register_novi_block_patterns()
         ]
     );
 }
-add_action('init', 'register_novi_block_patterns');
+add_action('init', 'novi_register_block_patterns');
