@@ -447,7 +447,7 @@
   },
   "customTemplates": [
     {
-      "name": "page-blank",
+      "name": "page-blank-fse",
       "title": "Page Blank FSE",
       "postTypes": ["page", "post"]
     }
