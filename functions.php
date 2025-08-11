@@ -186,9 +186,9 @@ function novi_register_block_patterns()
             'categories'  => ['buttons'],
             'content'     => '<!-- wp:group {"align":"full","className":"novi-cta"} -->
             <div class="wp-block-group alignfull novi-cta">
-                <h2>Scopri il nostro prodotto</h2>
-                <p>Un breve testo persuasivo qui.</p>
-                <div class="wp-block-buttons"><div class="wp-block-button"><a class="wp-block-button__link">Scopri di più</a></div></div>
+                <h2>Discover our product</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, sequi.</p>
+                <div class="wp-block-buttons"><div class="wp-block-button"><a class="wp-block-button__link">Discover More</a></div></div>
             </div>
             <!-- /wp:group -->',
         ]

@@ -37,11 +37,17 @@ Distributed under the GNU GPL v2 or later license.
 - Pally (by Indian Type Foundry, Fontshare — Free for commercial use)  
 
 Fonts are distributed via Fontshare with a free license for commercial use.  
-Full license terms: https://www.fontshare.com/license
+Full license terms: https://www.fontshare.com/licenses/itf-ffl
 
-== Images ==
+== Image Licenses ==
 
-All images, icons, and logos included in the theme were generated using AI tools by the theme author.
+All images included in this theme were created by the theme author using OpenAI's image generation tools (DALL·E).
+
+According to OpenAI's Terms of Use, the user (theme author) owns all rights to the generated images and can use them for any purpose, including commercial use, reproduction, modification, and distribution, without additional restrictions.
+
+These rights are compatible with the GNU General Public License (GPL) version 2 or later, under which this theme is released. Therefore, all generated images are also released under the GPL v2 or later.
+
+License URL: https://openai.com/policies/terms-of-use
 
 == Installation ==
 

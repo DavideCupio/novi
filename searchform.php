@@ -8,7 +8,7 @@
  */
 
 if (!defined('ABSPATH')) {
-  exit; // Exit if accessed directly.
+    exit; // Exit if accessed directly.
 }
 
 ?>
@@ -18,18 +18,18 @@ if (!defined('ABSPATH')) {
         aria-labelledby="search-label">
 
         <label id="search-label" for="search-field" class="screen-reader-text">
-            <?php esc_html_e('Cerca nel sito:', 'novi'); ?>
+            <?php esc_html_e('Search the site:', 'novi'); ?>
         </label>
 
         <div class="search-container">
             <input type="search" id="search-field" class="search-form-input"
-                placeholder="<?php esc_attr_e('Cerca...', 'novi'); ?>" value="<?php echo get_search_query(); ?>"
+                placeholder="<?php esc_attr_e('Search...', 'novi'); ?>" value="<?php echo get_search_query(); ?>"
                 name="s" autocomplete="search" aria-required="true" required />
 
             <input type="hidden" name="post_type" value="post" />
 
-            <button type="submit" aria-label="<?php esc_attr_e('Avvia ricerca', 'novi'); ?>"
-                title="<?php esc_attr_e('Cerca', 'novi'); ?>">
+            <button type="submit" aria-label="<?php esc_attr_e('Start search', 'novi'); ?>"
+                title="<?php esc_attr_e('Search', 'novi'); ?>">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="#ffffff" width="21px" height="21px"
                     viewBox="0 0 1920 1920">
                     <path

@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Template: Pagina del blog
- * Description: Pagina archivio degli articoli del blog.
+ * Template: Blog Page
+ * Description: Blog posts archive page.
  *
  * @package novi
  */
@@ -30,26 +30,26 @@ get_header();
 
         if (! empty($categories)) :
         ?>
-            <nav class="categories-nav alignfull is-layout-constrained has-global-padding" aria-label="Categorie del blog">
-                <span class="note alignwide">* <?php _e('Prendi e trascina le categoria', 'novi') ?></span>
-                <div class="category-scroll-wrapper alignwide">
-                    <ul class="category-list" tabindex="0">
-                        <?php foreach ($categories as $category) : ?>
-                            <li>
-                                <a class="site-button style-outline"
-                                    href="<?php echo esc_url(get_category_link($category->term_id)); ?>"
-                                    aria-label="Vedi articoli nella categoria <?php echo esc_attr($category->name); ?>">
-                                    <?php echo esc_html($category->name); ?>
-                                </a>
-                            </li>
-                        <?php endforeach; ?>
-                    </ul>
-                </div>
-            </nav><!-- category nav -->
+        <nav class="categories-nav alignfull is-layout-constrained has-global-padding" aria-label="Blog categories">
+            <span class="note alignwide">* <?php _e('Grab and drag the categories', 'novi') ?></span>
+            <div class="category-scroll-wrapper alignwide">
+                <ul class="category-list" tabindex="0">
+                    <?php foreach ($categories as $category) : ?>
+                    <li>
+                        <a class="site-button style-outline"
+                            href="<?php echo esc_url(get_category_link($category->term_id)); ?>"
+                            aria-label="Find articles in category <?php echo esc_attr($category->name); ?>">
+                            <?php echo esc_html($category->name); ?>
+                        </a>
+                    </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        </nav><!-- category nav -->
         <?php endif; ?>
         <div class="alignwide">
             <div class="grid-bento-post">
-                <!-- la griglia inizia qui -->
+                <!-- the grid starts here -->
                 <?php
                 $classi = ['bento-el-1', 'bento-el-2', 'bento-el-2', 'bento-el-1'];
                 $i = 0;
@@ -62,19 +62,19 @@ get_header();
                     $classe = $classi[$i % count($classi)];
                 ?>
 
-                    <article class="blog-post <?php echo $classe ?> animation fade" style="background-image: url('<?php echo esc_url($image_url); ?>'); background-size: cover;
+                <article class="blog-post <?php echo $classe ?> animation fade" style="background-image: url('<?php echo esc_url($image_url); ?>'); background-size: cover;
                         background-position: center;">
 
-                        <a href="<?php the_permalink(); ?>" class="post-link">
+                    <a href="<?php the_permalink(); ?>" class="post-link">
 
-                            <div class="post-content">
-                                <h3 class="post-title"><?php the_title(); ?></h3>
-                                <p class="post-excerpt"><?php echo \Novi\Theme\get_custom_excerpt(); ?></p>
-                            </div>
+                        <div class="post-content">
+                            <h3 class="post-title"><?php the_title(); ?></h3>
+                            <p class="post-excerpt"><?php echo novi_get_custom_excerpt(); ?></p>
+                        </div>
 
-                        </a>
+                    </a>
 
-                    </article>
+                </article>
 
                 <?php
                     $i++;
@@ -83,14 +83,14 @@ get_header();
             </div> <!-- chiude grid-bento-post -->
 
             <nav class="pagination alignwide" role="navigation"
-                aria-label="<?php esc_attr_e('Naviga gli articoli del blog', 'novi'); ?>">
+                aria-label="<?php esc_attr_e('Browse blog posts', 'novi'); ?>">
                 <ul class="pagination-list">
                     <li class="pagination-item">
                         <?php
-                        $prev_link = get_previous_posts_link(__('Precedente', 'novi'));
+                        $prev_link = get_previous_posts_link(__('Previous', 'novi'));
                         echo $prev_link
                             ? str_replace('<a', '<a class="site-button style-outline" aria-disabled="false"', $prev_link)
-                            : '<a class="site-button style-outline" href="#" aria-disabled="true" tabindex="-1">' . __('Precedente', 'novi') . '</a>';
+                            : '<a class="site-button style-outline" href="#" aria-disabled="true" tabindex="-1">' . __('Previous', 'novi') . '</a>';
                         ?>
                     </li>
                     <?php
@@ -109,10 +109,10 @@ get_header();
                     ?>
                     <li class="pagination-item">
                         <?php
-                        $next_link = get_next_posts_link(__('Successivo', 'novi'));
+                        $next_link = get_next_posts_link(__('Next', 'novi'));
                         echo $next_link
                             ? str_replace('<a', '<a class="site-button style-outline" aria-disabled="false"', $next_link)
-                            : '<a class="site-button style-outline" href="#" aria-disabled="true" tabindex="-1">' . __('Successivo', 'novi') . '</a>';
+                            : '<a class="site-button style-outline" href="#" aria-disabled="true" tabindex="-1">' . __('Next', 'novi') . '</a>';
                         ?>
                     </li>
                 </ul>

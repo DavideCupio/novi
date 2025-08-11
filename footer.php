@@ -2,7 +2,7 @@
 
 /**
  * File: footer.php
- * Description: Output del footer del sito e chiusura del body e dell'HTML. Caricato in tutte le pagine.
+ * Description: Site footer output and closing of the body and HTML. Loaded on all pages.
  *
  * @package novi
  * @since 1.0.0
@@ -11,25 +11,24 @@
 ?>
 
 
-<footer class="footer site-footer" role="contentinfo"
-    aria-label="<?php esc_attr_e('Informazioni sul sito', 'novi'); ?>">
+<footer class="footer site-footer" role="contentinfo" aria-label="<?php esc_attr_e('Site information', 'novi'); ?>">
     <div class="container is-layout-constrained has-global-padding">
         <div class="main-footer alignwide">
             <?php if (is_active_sidebar('footer-left') || is_active_sidebar('footer-right')) : ?>
-                <div class="row">
-                    <div class="footer-left">
-                        <?php dynamic_sidebar('footer-left') ?>
-                    </div>
-                    <div class="footer-right">
-                        <?php dynamic_sidebar('footer-right') ?>
-                    </div>
+            <div class="row">
+                <div class="footer-left">
+                    <?php dynamic_sidebar('footer-left') ?>
                 </div>
+                <div class="footer-right">
+                    <?php dynamic_sidebar('footer-right') ?>
+                </div>
+            </div>
             <?php endif; ?>
             <?php get_template_part('assets/components/scroll-top'); ?>
             <p class="footer-text">
                 <?php
                 printf(
-                    esc_html__('&copy; %1$s %2$s. Tutti i diritti riservati.', 'novi'),
+                    esc_html__('&copy; %1$s %2$s. All rights reserved.', 'novi'),
                     date('Y'),
                     get_bloginfo('name')
                 );

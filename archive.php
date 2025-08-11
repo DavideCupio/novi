@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Template: Pagina archivio
- * Description: Template base per una pagina di archivio.
+ * Template: Archive Page
+ * Description: Base template for an archive page.
  *
  * @package novi
  */
@@ -28,26 +28,26 @@ get_header(); ?>
 
         if (! empty($categories)) :
         ?>
-            <nav class="categories-nav alignfull is-layout-constrained has-global-padding" aria-label="Categorie del blog">
-                <span class="note alignwide">* <?php _e('Prendi e trascina le categoria', 'novi') ?></span>
-                <div class="category-scroll-wrapper alignwide">
-                    <ul class="category-list" tabindex="0">
-                        <?php foreach ($categories as $category) : ?>
-                            <li>
-                                <a class="site-button style-outline"
-                                    href="<?php echo esc_url(get_category_link($category->term_id)); ?>"
-                                    aria-label="Vedi articoli nella categoria <?php echo esc_attr($category->name); ?>">
-                                    <?php echo esc_html($category->name); ?>
-                                </a>
-                            </li>
-                        <?php endforeach; ?>
-                    </ul>
-                </div>
-            </nav>
+        <nav class="categories-nav alignfull is-layout-constrained has-global-padding" aria-label="Blog categories">
+            <span class="note alignwide">* <?php _e('Grab and drag the categories', 'novi') ?></span>
+            <div class="category-scroll-wrapper alignwide">
+                <ul class="category-list" tabindex="0">
+                    <?php foreach ($categories as $category) : ?>
+                    <li>
+                        <a class="site-button style-outline"
+                            href="<?php echo esc_url(get_category_link($category->term_id)); ?>"
+                            aria-label="View posts in category <?php echo esc_attr($category->name); ?>">
+                            <?php echo esc_html($category->name); ?>
+                        </a>
+                    </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        </nav>
         <?php endif; ?>
         <div class="alignwide ">
             <div class="grid-bento-post">
-                <!-- la griglia inizia qui -->
+                <!-- the grid starts here -->
                 <?php
                 $classi = ['bento-el-1', 'bento-el-2', 'bento-el-2', 'bento-el-1'];
                 $i = 0;
@@ -59,25 +59,25 @@ get_header(); ?>
                     $classe = $classi[$i % count($classi)];
                 ?>
 
-                    <article class="blog-post <?php echo $classe ?> animation fade" style="background-image: url('<?php echo esc_url($image_url); ?>'); background-size: cover;
+                <article class="blog-post <?php echo $classe ?> animation fade" style="background-image: url('<?php echo esc_url($image_url); ?>'); background-size: cover;
                         background-position: center;">
 
-                        <a href="<?php the_permalink(); ?>" class="post-link">
+                    <a href="<?php the_permalink(); ?>" class="post-link">
 
-                            <div class="post-content">
-                                <h3 class="post-title"><?php the_title(); ?></h3>
-                                <p class="post-excerpt"><?php echo novi_get_custom_excerpt(); ?></p>
-                            </div>
+                        <div class="post-content">
+                            <h3 class="post-title"><?php the_title(); ?></h3>
+                            <p class="post-excerpt"><?php echo novi_get_custom_excerpt(); ?></p>
+                        </div>
 
-                        </a>
+                    </a>
 
-                    </article>
+                </article>
 
                 <?php
                     $i++;
                 endwhile;
                 ?>
-            </div> <!-- chiude grid-bento-post -->
+            </div> <!-- closes grid-bento-post -->
         </div>
     </section>
 </main>

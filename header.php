@@ -2,7 +2,7 @@
 
 /**
  * File: header.php
- * Description: Contiene l'output dell'intestazione del sito, incluso il doctype, head e apertura body. Caricato in tutte le pagine.
+ * Description: Contains the site header output, including doctype, head, and opening body. Loaded on all pages.
  *
  * @package novi
  * @since 1.0.0
@@ -20,7 +20,7 @@
 <body <?php body_class(); ?>>
     <?php wp_body_open(); ?>
     <a class="skip-link screen-reader-text" href="#main-content">
-        <?php esc_html_e('Salta al contenuto', 'novi'); ?>
+        <?php esc_html_e('Skip to content', 'novi'); ?>
     </a>
 
 
@@ -35,48 +35,48 @@
                             $custom_logo_id = get_theme_mod('custom_logo');
                             $logo = wp_get_attachment_image_src($custom_logo_id, 'large');
                         ?>
-                            <a href="<?php echo esc_url(home_url('/')); ?>" title="<?php bloginfo('name'); ?>"
-                                class="brand">
-                                <img src="<?php echo esc_url($logo[0]); ?>"
-                                    alt="<?php echo esc_attr(get_bloginfo('name')); ?>">
-                            </a>
+                        <a href="<?php echo esc_url(home_url('/')); ?>" title="<?php bloginfo('name'); ?>"
+                            class="brand">
+                            <img src="<?php echo esc_url($logo[0]); ?>"
+                                alt="<?php echo esc_attr(get_bloginfo('name')); ?>">
+                        </a>
                         <?php else : ?>
-                            <a href="<?php echo esc_url(home_url('/')); ?>" class="site-title">
-                                <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/logo-novi.png'); ?>"
-                                    alt="<?php echo esc_attr(get_bloginfo('name')); ?>">
-                            </a>
+                        <a href="<?php echo esc_url(home_url('/')); ?>" class="site-title">
+                            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/logo-novi.png'); ?>"
+                                alt="<?php echo esc_attr(get_bloginfo('name')); ?>">
+                        </a>
                         <?php endif; ?>
                     </div>
 
                     <button id="burger-toggle" class="burger-menu" aria-expanded="false" aria-controls="header-menu"
-                        aria-label="<?php esc_attr_e('Apri o chiudi il menu principale', 'novi'); ?>">
+                        aria-label="<?php esc_attr_e('Open or close the main menu', 'novi'); ?>">
                         <span class="burger-bar"></span>
                         <span class="burger-bar"></span>
                     </button><!-- burger-menu -->
 
                 </div><!-- main-header -->
                 <?php if (has_nav_menu('header-menu')) : ?>
-                    <nav id="header-menu" class="header-navigation" role="navigation"
-                        aria-label='<?php _e('Main menu ', 'novi'); ?>' aria-expanded="false" aria-hidden="true">
-                        <h2 class="screen-reader-text"><?php _e('Main menu ', 'novi'); ?></h2>
-                        <?php
+                <nav id="header-menu" class="header-navigation" role="navigation"
+                    aria-label='<?php _e('Main menu ', 'novi'); ?>' aria-expanded="false" aria-hidden="true">
+                    <h2 class="screen-reader-text"><?php _e('Main menu ', 'novi'); ?></h2>
+                    <?php
                         wp_nav_menu([
                             'theme_location' => 'header-menu',
                             'container'      => 'header-navigation',
                             'items_wrap'     => '<ul class="header-navigation__list">%3$s</ul>',
                         ]);
                         ?>
-                    </nav><!-- header-navigation -->
+                </nav><!-- header-navigation -->
                 <?php else: ?>
-                    <nav id="header-menu" class="header-navigation no-menu" role="navigation"
-                        aria-label='<?php _e('Main menu ', 'novi'); ?>' aria-expanded="false" aria-hidden="true">
-                        <?php
+                <nav id="header-menu" class="header-navigation no-menu" role="navigation"
+                    aria-label='<?php _e('Main menu ', 'novi'); ?>' aria-expanded="false" aria-hidden="true">
+                    <?php
                         wp_nav_menu([
                             'container'      => 'false',
                             'items_wrap'     => '<ul class="header-navigation__list">%3$s</ul>',
                         ]);
                         ?>
-                    </nav>
+                </nav>
                 <?php endif; ?>
             </div><!-- wrap-navigation -->
         </div><!-- container -->
