@@ -96,8 +96,10 @@ function novi_get_page_header_background($id = null)
     $blog_page_id = get_option('page_for_posts');
     $background_image = novi_get_page_header_background($blog_page_id);
     ?>
-<section class="page-header alignwide animation fade"
-    aria-label="<?php echo esc_attr(sprintf(__('Blog section: %s', 'novi'), get_the_title($blog_page_id))); ?>"
+<section class="page-header alignwide animation fade" aria-label="<?php echo esc_attr(
+                                                                            /* translators: %s: blog section title */
+                                                                            sprintf(__('Blog section: %s', 'novi'), get_the_title($blog_page_id))
+                                                                        ); ?>"
     style="background-image: url('<?php echo esc_url($background_image); ?>'); background-size: cover; background-position: center; background-repeat: no-repeat;">
     <div class="page-inner container has-global-padding">
         <div class="page-description">

@@ -15,18 +15,19 @@
     <div class="container is-layout-constrained has-global-padding">
         <div class="main-footer alignwide">
             <?php if (is_active_sidebar('footer-left') || is_active_sidebar('footer-right')) : ?>
-            <div class="row">
-                <div class="footer-left">
-                    <?php dynamic_sidebar('footer-left') ?>
+                <div class="row">
+                    <div class="footer-left">
+                        <?php dynamic_sidebar('footer-left') ?>
+                    </div>
+                    <div class="footer-right">
+                        <?php dynamic_sidebar('footer-right') ?>
+                    </div>
                 </div>
-                <div class="footer-right">
-                    <?php dynamic_sidebar('footer-right') ?>
-                </div>
-            </div>
             <?php endif; ?>
             <?php get_template_part('assets/components/scroll-top'); ?>
             <p class="footer-text">
                 <?php
+                /* translators: 1: copyright year, 2: site name */
                 printf(
                     esc_html__('&copy; %1$s %2$s. All rights reserved.', 'novi'),
                     date('Y'),

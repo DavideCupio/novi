@@ -49,6 +49,32 @@ These rights are compatible with the GNU General Public License (GPL) version 2 
 
 License URL: https://openai.com/policies/terms-of-use
 
+== Image Assets (file-level listing) ==
+
+1) File: assets/img/logo-novi.png
+   Author: [Cupioli Davide] (AI-generated with OpenAI DALL·E)
+   Source: Original work (no external source)
+   License: GPL-2.0-or-later
+   License URL: https://www.gnu.org/licenses/gpl-2.0.html
+
+2) File: assets/img/fallback.jpg
+   Author: [Cupioli Davide] (AI-generated with OpenAI DALL·E)
+   Source: Original work (no external source)
+   License: GPL-2.0-or-later
+   License URL: https://www.gnu.org/licenses/gpl-2.0.html
+
+3) File: assets/img/fallback-article.jpg
+   Author: [Cupioli Davide]
+   Source: Original work (no external source)
+   License: GPL-2.0-or-later
+   License URL: https://www.gnu.org/licenses/gpl-2.0.html
+
+4) File: screenshot.png
+   Author: [Cupioli Davide]
+   Source: Generated from theme preview
+   License: GPL-2.0-or-later
+   License URL: https://www.gnu.org/licenses/gpl-2.0.html
+
 == Installation ==
 
 1. Upload the theme folder to `/wp-content/themes/novi/`  

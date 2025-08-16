@@ -1,21 +1,26 @@
-document.addEventListener("DOMContentLoaded", function () {
-  initCustomCursor();
-  initScrollDragging();
-  initScrollTopButton();
-  initMenuToggle();
-  initAnimations();
+"use strict";
+
+// Avvia tutte le init quando il DOM è pronto
+document.addEventListener("DOMContentLoaded", () => {
+  noviInitScrollDragging();
+  noviInitScrollTopButton();
+  noviInitMenuToggle();
+  noviInitAnimations();
+  noviInitCustomCursor();
 });
 
-/** GRAB E TOUCH SCROLL CATEGORY **/
-function initScrollDragging() {
+/* ==========================================================================
+   1) SCROLL DRAGGING CATEGORY (mouse + touch)  —  .category-list
+   ========================================================================== */
+function noviInitScrollDragging() {
   const slider = document.querySelector(".category-list");
   if (!slider) return;
 
   let isDown = false;
-  let startX;
-  let scrollLeft;
+  let startX = 0;
+  let scrollLeft = 0;
 
-  // Mouse events
+  // Mouse
   slider.addEventListener("mousedown", (e) => {
     isDown = true;
     slider.classList.add("dragging");
@@ -37,11 +42,11 @@ function initScrollDragging() {
     if (!isDown) return;
     e.preventDefault();
     const x = e.pageX - slider.offsetLeft;
-    const walk = (x - startX) * 1.5;
+    const walk = (x - startX) * 1.5; // fattore velocità
     slider.scrollLeft = scrollLeft - walk;
   });
 
-  // Touch events
+  // Touch
   slider.addEventListener("touchstart", (e) => {
     startX = e.touches[0].pageX;
     scrollLeft = slider.scrollLeft;
@@ -54,35 +59,37 @@ function initScrollDragging() {
   });
 }
 
-/** SCROLL TO TOP BUTTON **/
-function initScrollTopButton() {
+/* ==========================================================================
+   2) SCROLL TO TOP BUTTON — #scrollTop
+   ========================================================================== */
+function noviInitScrollTopButton() {
   const scrollTopButton = document.getElementById("scrollTop");
   if (!scrollTopButton) return;
 
-  function toggleScrollButton() {
+  const toggleScrollButton = () => {
     const isVisible = window.scrollY > 100;
     scrollTopButton.classList.toggle("is-visible", isVisible);
     scrollTopButton.setAttribute("aria-hidden", isVisible ? "false" : "true");
-  }
+  };
 
-  function scrollToTop(e) {
+  const scrollToTop = (e) => {
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: "smooth" });
-  }
+  };
 
   scrollTopButton.addEventListener("click", scrollToTop);
   scrollTopButton.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      scrollToTop(e);
-    }
+    if (e.key === "Enter" || e.key === " ") scrollToTop(e);
   });
 
-  window.addEventListener("scroll", toggleScrollButton);
+  window.addEventListener("scroll", toggleScrollButton, { passive: true });
   toggleScrollButton();
 }
 
-/** BURGER MENU & FOCUS TRAP **/
-function initMenuToggle() {
+/* ==========================================================================
+   3) BURGER MENU + Focus Trap + ARIA — #burger-toggle / #header-menu
+   ========================================================================== */
+function noviInitMenuToggle() {
   const burger = document.getElementById("burger-toggle");
   const nav = document.getElementById("header-menu");
   if (!burger || !nav) return;
@@ -91,14 +98,14 @@ function initMenuToggle() {
     'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
   let releaseFocusTrap;
 
-  function trapFocus(container) {
+  const trapFocus = (container) => {
     const focusableEls = container.querySelectorAll(focusableSelectors);
+    if (!focusableEls.length) return () => {};
     const firstEl = focusableEls[0];
     const lastEl = focusableEls[focusableEls.length - 1];
 
-    function handleTab(e) {
+    const handleTab = (e) => {
       if (e.key !== "Tab") return;
-
       if (e.shiftKey) {
         if (document.activeElement === firstEl) {
           e.preventDefault();
@@ -110,40 +117,39 @@ function initMenuToggle() {
           firstEl.focus();
         }
       }
-    }
+    };
 
     container.addEventListener("keydown", handleTab);
     return () => container.removeEventListener("keydown", handleTab);
-  }
+  };
 
-  function handleKeyboardNavigation(e) {
+  const handleKeyboardNavigation = (e) => {
     const focusableEls = nav.querySelectorAll(focusableSelectors);
+    if (!focusableEls.length) return;
+
     const activeIndex = Array.from(focusableEls).indexOf(
       document.activeElement
     );
 
-    if (e.key === "Escape") {
-      toggleMenu();
-    }
-
+    if (e.key === "Escape") toggleMenu();
     if (e.key === "ArrowDown") {
       e.preventDefault();
       const nextIndex = (activeIndex + 1) % focusableEls.length;
       focusableEls[nextIndex].focus();
     }
-
     if (e.key === "ArrowUp") {
       e.preventDefault();
       const prevIndex =
         (activeIndex - 1 + focusableEls.length) % focusableEls.length;
       focusableEls[prevIndex].focus();
     }
-  }
+  };
 
-  function toggleMenu() {
+  const toggleMenu = () => {
     const isOpen = nav.classList.contains("is-open");
 
     if (!isOpen) {
+      // Open
       nav.classList.remove("closing");
       nav.classList.add("opening", "is-open", "active");
       document.body.classList.add("no-scroll");
@@ -159,11 +165,13 @@ function initMenuToggle() {
         document.addEventListener("keydown", handleKeyboardNavigation);
       }, 300);
 
-      nav.addEventListener("animationend", function handleOpen() {
+      const handleOpen = () => {
         nav.classList.remove("opening");
         nav.removeEventListener("animationend", handleOpen);
-      });
+      };
+      nav.addEventListener("animationend", handleOpen);
     } else {
+      // Close
       nav.classList.remove("opening", "active", "is-open");
       document.body.classList.remove("no-scroll");
       nav.classList.add("closing");
@@ -176,12 +184,13 @@ function initMenuToggle() {
       nav.setAttribute("aria-hidden", "true");
       burger.classList.remove("open");
 
-      nav.addEventListener("animationend", function handleClose() {
+      const handleClose = () => {
         nav.classList.remove("closing");
         nav.removeEventListener("animationend", handleClose);
-      });
+      };
+      nav.addEventListener("animationend", handleClose);
     }
-  }
+  };
 
   burger.addEventListener("click", toggleMenu);
   burger.addEventListener("keydown", (e) => {
@@ -192,86 +201,74 @@ function initMenuToggle() {
   });
 }
 
-/** ANIMATION OBSERVER **/
-function initAnimations() {
+/* ==========================================================================
+   4) ANIMATIONS ON VIEWPORT — .animation ➜ .entry-page
+   ========================================================================== */
+function noviInitAnimations() {
   const elementsToWatch = document.querySelectorAll(".animation");
   if (!elementsToWatch.length) return;
 
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: "0px 0px -10% 0px",
-  };
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        requestAnimationFrame(() => entry.target.classList.add("entry-page"));
+        obs.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.1, rootMargin: "0px 0px -10% 0px" }
+  );
 
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        requestAnimationFrame(() => {
-          entry.target.classList.add("entry-page");
-        });
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  elementsToWatch.forEach((element) => observer.observe(element));
+  elementsToWatch.forEach((el) => observer.observe(el));
 }
 
-/** CUSTOM CURSOR **/
-function initCustomCursor() {
+/* ==========================================================================
+   5) CUSTOM CURSOR — .custom-cursor (disabilitato se body.logged-in)
+   ========================================================================== */
+function noviInitCustomCursor() {
   if (document.body.classList.contains("logged-in")) return;
   const cursor = document.querySelector(".custom-cursor");
   if (!cursor) return;
 
-  let mouseX = 0;
-  let mouseY = 0;
-  let currentX = 0;
-  let currentY = 0;
-  const speed = 0.2; // Più basso = più lento e fluido
+  let mouseX = 0,
+    mouseY = 0;
+  let currentX = 0,
+    currentY = 0;
+  const speed = 0.2;
 
-  document.addEventListener("mousemove", (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    cursor.style.opacity = 1;
-  });
+  document.addEventListener(
+    "mousemove",
+    (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursor.style.opacity = 1;
+    },
+    { passive: true }
+  );
 
   document.addEventListener("mouseleave", () => {
     cursor.style.opacity = 0;
   });
-
   document.addEventListener("mouseenter", () => {
     cursor.style.opacity = 1;
   });
 
-  function animateCursor() {
+  const animateCursor = () => {
     currentX += (mouseX - currentX) * speed;
     currentY += (mouseY - currentY) * speed;
     cursor.style.transform = `translate(${currentX}px, ${currentY}px)`;
     requestAnimationFrame(animateCursor);
-  }
-
+  };
   animateCursor();
-  bindCursorHoverEffects();
-}
 
-function bindCursorHoverEffects() {
-  const cursor = document.querySelector(".custom-cursor");
-  if (!cursor) return;
+  const interactiveSel =
+    "a, button, input, textarea, select, [tabindex]:not([tabindex='-1']), .hover-target";
 
   document.body.addEventListener("mouseover", (e) => {
-    const target = e.target.closest(
-      "a, button, input, textarea, select, [tabindex]:not([tabindex='-1']), .hover-target"
-    );
-    if (target) {
-      cursor.classList.add("cursor-hover");
-    }
+    if (e.target.closest(interactiveSel)) cursor.classList.add("cursor-hover");
   });
-
   document.body.addEventListener("mouseout", (e) => {
-    const target = e.target.closest(
-      "a, button, input, textarea, select, [tabindex]:not([tabindex='-1']), .hover-target"
-    );
-    if (target) {
+    if (e.target.closest(interactiveSel))
       cursor.classList.remove("cursor-hover");
-    }
   });
 }

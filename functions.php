@@ -61,7 +61,7 @@ function novi_setup_theme()
 add_action('after_setup_theme', 'novi_setup_theme');
 
 // Caricamento degli script e degli stili del tema nel frontend
-function enqueue_scripts()
+function novi_enqueue_scripts()
 {
     $version = defined('NOVI_VERSION') ? NOVI_VERSION : wp_get_theme()->get('Version');
 
@@ -72,7 +72,7 @@ function enqueue_scripts()
         wp_enqueue_script('comment-reply');
     }
 }
-add_action('wp_enqueue_scripts', 'enqueue_scripts');
+add_action('wp_enqueue_scripts', 'novi_enqueue_scripts');
 
 // Inclusione dei file esterni
 function novi_require_theme_files()
@@ -119,8 +119,11 @@ function novi_post_reading_time($post_id = null)
     $word_count = str_word_count(strip_tags(strip_shortcodes($content)));
     $minutes = ceil($word_count / 200);
 
+    /* translators: %d: estimated reading time in minutes */
     return sprintf(
-        _n('%d minuto di lettura', '%d minuti di lettura', $minutes, 'novi'),
+        esc_html(
+            _n('%d minuto di lettura', '%d minuti di lettura', $minutes, 'novi')
+        ),
         $minutes
     );
 }
