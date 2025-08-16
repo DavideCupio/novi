@@ -23,27 +23,28 @@ get_header(); ?>
 
 
         <?php if (have_posts()) : ?>
-        <div class="search-results alignwide site-grid">
-            <?php
-                $featured_image = get_the_post_thumbnail_url(null, 'full');
-                $image_url = $featured_image ? $featured_image : get_template_directory_uri() . '/assets/img/fallback-article.jpg'; ?>
+            <div class="search-results alignwide site-grid">
+                <?php while (have_posts()) : the_post(); ?>
+                    <?php
+                    $featured_image = get_the_post_thumbnail_url(null, 'full');
+                    $image_url = $featured_image ? $featured_image : get_template_directory_uri() . '/assets/img/fallback-article.jpg';
+                    $style = sprintf(
+                        "background-image: url('%s'); background-size: cover; background-position: center;",
+                        esc_url($image_url)
+                    );
+                    ?>
+                    <article class="blog-post animation fade" style="<?php echo esc_attr($style); ?>">
+                        <a href="<?php echo esc_url(get_permalink()); ?>" class="post-link">
+                            <div class="post-content">
+                                <h3 class="post-title"><?php echo esc_html(get_the_title()); ?></h3>
+                            </div>
+                        </a>
+                    </article>
 
-            <?php while (have_posts()) : the_post(); ?>
-
-            <article class="blog-post animation fade" style="background-image: url('<?php echo esc_url($image_url); ?>'); background-size: cover;
-                        background-position: center;">
-                <a href="<?php the_permalink(); ?>" class="post-link">
-                    <div class="post-content">
-                        <h3 class="post-title"><?php the_title(); ?></h3>
-                        <p class="post-excerpt"><?php echo novi_get_custom_excerpt(); ?></p>
-                    </div>
-                </a>
-            </article>
-
-            <?php endwhile; ?>
-        </div>
+                <?php endwhile; ?>
+            </div>
         <?php else : ?>
-        <p><?php _e('No results found for your search.', 'novi'); ?></p>
+            <p><?php _e('No results found for your search.', 'novi'); ?></p>
         <?php endif; ?>
 
 

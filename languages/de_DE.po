@@ -1,0 +1,500 @@
+# Copyright (C) 2025 Cupioli Davide
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Novi 1.0.4\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/novi\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-08-16T09:21:58+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: novi\n"
+
+#. Theme Name of the theme
+#: style.css
+msgid "Novi"
+msgstr "Novi"
+
+#. Description of the theme
+#: style.css
+msgid "Hybrid WordPress theme with classic header and footer, Gutenberg compatibility, customizable color palette via the Customizer, and support for adding custom fonts."
+msgstr "Hybrid-WordPress-Theme mit klassischem Header und Footer, Gutenberg-Kompatibilität, anpassbarer Farbpalette über den Customizer und Unterstützung für das Hinzufügen benutzerdefinierter Schriftarten."
+
+#. Author of the theme
+#: style.css
+msgid "Cupioli Davide"
+msgstr "Cupioli Davide"
+
+#. Author URI of the theme
+#: style.css
+msgid "https://cupiolistudio.it"
+msgstr "https://cupiolistudio.it"
+
+#: archive.php:32
+#: home.php:34
+msgid "Grab and drag the categories"
+msgstr "Kategorien greifen und ziehen"
+
+#: comments.php:11
+msgid "Direct access not allowed."
+msgstr "Direkter Zugriff nicht erlaubt."
+
+#: comments.php:16
+msgid "This post is password protected. Enter the password to view comments."
+msgstr "Dieser Beitrag ist passwortgeschützt. Bitte das Passwort eingeben, um die Kommentare zu sehen."
+
+#: comments.php:26
+#, php-format
+msgid "%s Comment"
+msgid_plural "%s Comments"
+msgstr[0] "%s Kommentar"
+msgstr[1] "%s Kommentare"
+
+#: comments.php:35
+#: comments.php:54
+msgid "Previous comments"
+msgstr "Vorherige Kommentare"
+
+#: comments.php:36
+#: comments.php:55
+msgid "Next comments"
+msgstr "Nächste Kommentare"
+
+#: comments.php:60
+msgid "Comments are closed."
+msgstr "Kommentare sind geschlossen."
+
+#: comments.php:69
+msgid "Leave a comment"
+msgstr "Einen Kommentar hinterlassen"
+
+#: comments.php:74
+msgid "Submit comment"
+msgstr "Kommentar absenden"
+
+#: comments.php:75
+msgid "Cancel reply"
+msgstr "Antwort abbrechen"
+
+#: comments.php:78
+msgid "Name"
+msgstr "Name"
+
+#: comments.php:82
+msgid "Email"
+msgstr "E-Mail"
+
+#: comments.php:87
+msgid "Comment"
+msgstr "Kommentar"
+
+#: footer.php:14
+msgid "Site information"
+msgstr "Seiteninformationen"
+
+#: footer.php:31
+#, php-format
+msgid "&copy; %1$s %2$s. All rights reserved."
+msgstr "&copy; %1$s %2$s. Alle Rechte vorbehalten."
+
+#: functions.php:58
+msgid "Menu principale"
+msgstr "Hauptmenü"
+
+#: functions.php:116
+msgid "Tempo di lettura non disponibile"
+msgstr "Lesezeit nicht verfügbar"
+
+#: functions.php:123
+#, php-format
+msgid "%d minuto di lettura"
+msgid_plural "%d minuti di lettura"
+msgstr[0] "%d Minute Lesezeit"
+msgstr[1] "%d Minuten Lesezeit"
+
+#: functions.php:147
+msgid "Sidebar"
+msgstr "Seitenleiste"
+
+#: functions.php:149
+msgid "Sidebar principale"
+msgstr "Hauptseitenleiste"
+
+#: functions.php:157
+msgid "Footer left"
+msgstr "Fußzeile links"
+
+#: functions.php:159
+#: functions.php:169
+msgid "Widget nel footer"
+msgstr "Widget in der Fußzeile"
+
+#: functions.php:167
+msgid "Footer right"
+msgstr "Fußzeile rechts"
+
+#: functions.php:184
+msgid "Call to Action"
+msgstr "Handlungsaufforderung"
+
+#: functions.php:185
+msgid "A centered call to action section."
+msgstr "Ein zentrierter Bereich mit Handlungsaufforderung."
+
+#: header.php:23
+msgid "Skip to content"
+msgstr "Zum Inhalt springen"
+
+#: header.php:52
+msgid "Open or close the main menu"
+msgstr "Hauptmenü öffnen oder schließen"
+
+#: header.php:60
+#: header.php:61
+#: header.php:72
+msgid "Main menu "
+msgstr "Hauptmenü"
+
+#: home.php:86
+msgid "Browse blog posts"
+msgstr "Blogbeiträge durchsuchen"
+
+#: home.php:90
+#: home.php:93
+#: single.php:35
+msgid "Previous"
+msgstr "Zurück"
+
+#: home.php:112
+#: home.php:115
+#: single.php:46
+msgid "Next"
+msgstr "Weiter"
+
+#: inc/customizer.php:27
+#: inc/customizer.php:32
+msgid "Call To Action"
+msgstr "Handlungsaufforderung"
+
+#: inc/customizer.php:37
+msgid "Button text"
+msgstr "Button-Text"
+
+#: inc/customizer.php:48
+msgid "Link text"
+msgstr "Link-Text"
+
+#: inc/customizer.php:66
+msgid "Novi Color Palette"
+msgstr "Novi-Farbpalette"
+
+#: inc/customizer.php:89
+msgid "Typography"
+msgstr "Typografie"
+
+#: inc/customizer.php:98
+msgid "Upload Body Font (.woff2 or .ttf)"
+msgstr "Schriftart für den Text hochladen (.woff2 oder .ttf)"
+
+#: inc/customizer.php:107
+msgid "Upload Heading Font (.woff2 or .ttf)"
+msgstr "Schriftart für die Überschrift hochladen (.woff2 oder .ttf)"
+
+#: inc/customizer.php:119
+msgid "How to activate load font?"
+msgstr "Wie aktiviere ich das Laden von Schriftarten?"
+
+#: inc/customizer.php:122
+msgid "The font feature is deactivated by default.<br><br>"
+msgstr "Die Schriftarten-Funktion ist standardmäßig deaktiviert.<br><br>"
+
+#: inc/customizer.php:123
+msgid "More precisely, it's not possible to upload fonts directly.<br><br>"
+msgstr "Genauer gesagt ist es nicht möglich, Schriftarten direkt hochzuladen.<br><br>"
+
+#: inc/customizer.php:125
+msgid "See the official documentation"
+msgstr "Siehe die offizielle Dokumentation"
+
+#: inc/gutemberg.php:24
+msgid "Mobile Reverse"
+msgstr "Mobil umkehren"
+
+#: inc/gutemberg.php:27
+msgid "Negative"
+msgstr "Negativ"
+
+#: patterns/footer.php
+msgctxt "Pattern title"
+msgid "Footer"
+msgstr "Fußzeile"
+
+#: patterns/header.php
+msgctxt "Pattern title"
+msgid "Header"
+msgstr "Kopfzeile"
+
+#: search.php:46
+msgid "No results found for your search."
+msgstr "Keine Ergebnisse für deine Suche gefunden."
+
+#: searchform.php:21
+msgid "Search the site:"
+msgstr "Seite durchsuchen:"
+
+#: searchform.php:26
+msgid "Search..."
+msgstr "Suchen..."
+
+#: searchform.php:31
+msgid "Start search"
+msgstr "Suche starten"
+
+#: searchform.php:32
+msgid "Search"
+msgstr "Suche"
+
+#: single.php:25
+msgid "Post Navigation"
+msgstr "Beitragsnavigation"
+
+#: single.php:39
+msgid "Browse through the posts"
+msgstr "Durch die Beiträge blättern"
+
+#: single.php:62
+msgid "Pages:"
+msgstr "Seiten:"
+
+#: template-parts/above.php:47
+msgid "Oops! That page can’t be found."
+msgstr "Ups! Diese Seite konnte nicht gefunden werden."
+
+#: template-parts/above.php:49
+msgid "Sorry, but the page you were looking for could not be found."
+msgstr "Entschuldigung, die gesuchte Seite konnte nicht gefunden werden."
+
+#: template-parts/above.php:51
+msgid "Back to homepage"
+msgstr "Zurück zur Startseite"
+
+#: template-parts/above.php:52
+msgid "Back Home"
+msgstr "Zurück nach Hause"
+
+#: template-parts/above.php:100
+#, php-format
+msgid "Blog section: %s"
+msgstr "Blog-Bereich: %s"
+
+#: template-parts/above.php:116
+msgid "Results for: "
+msgstr "Ergebnisse für: "
+
+#. Template Name of the theme
+msgid "Page Blank"
+msgstr "Leere Seite"
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Primary e Accent"
+msgstr "Primär und Akzent"
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Secondary e Accent 2"
+msgstr "Sekundär und Akzent 2"
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Button e Contrast color"
+msgstr "Button und Kontrastfarbe"
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Warning e Base color"
+msgstr "Warnung und Basisfarbe"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Vertical Accent to Accent 2"
+msgstr "Vertikal Akzent zu Akzent 2"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Vertical Primary to Button"
+msgstr "Vertikal Primär zu Button"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Vertical Secondary to Warning"
+msgstr "Vertikal Sekundär zu Warnung"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Vertical Base color to Contrast color"
+msgstr "Vertikal Basisfarbe zu Kontrastfarbe"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Base color (content text)"
+msgstr "Basisfarbe (Inhaltstext)"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Contrast color (content background)"
+msgstr "Kontrastfarbe (Inhalts-Hintergrund)"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Primary"
+msgstr "Primär"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Secondary"
+msgstr "Sekundär"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Button"
+msgstr "Button"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Hover"
+msgstr "Hover"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Warning"
+msgstr "Warnung"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Focus"
+msgstr "Fokus"
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "light"
+msgstr "Hell"
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Medium"
+msgstr "Mittel"
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "large"
+msgstr "Groß"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "tiny"
+msgstr "Winzig"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "small"
+msgstr "Klein"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "medium"
+msgstr "Mittel"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "large"
+msgstr "Groß"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "big"
+msgstr "Sehr groß"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "huge"
+msgstr "Riesig"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "enormous"
+msgstr "Enorm"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Pally"
+msgstr "Pally"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Neco"
+msgstr "Neco"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "System Sans-serif"
+msgstr "System Sans-Serif"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "System Serif"
+msgstr "System-Serif"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Font p"
+msgstr "Schrift p"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Font 1"
+msgstr "Schrift 1"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Font 2"
+msgstr "Schrift 2"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Font 3"
+msgstr "Schrift 3"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Font 4"
+msgstr "Schrift 4"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Font 5"
+msgstr "Schrift 5"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Font 6"
+msgstr "Schrift 6"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Page Blank FSE"
+msgstr "Leere Seite FSE"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Header"
+msgstr "Kopfzeile"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Footer"
+msgstr "Fußzeile"
