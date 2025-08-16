@@ -22,12 +22,14 @@ if (have_comments()) : ?>
     <section id="comments" class="comments alignwide">
         <h3 id="comments-title">
             <?php
+            $comments_number = get_comments_number();
+
             /* translators: %s: number of comments */
+            $comments_text = _n('%s Comment', '%s Comments', $comments_number, 'novi');
+
             printf(
-                esc_html(
-                    _n('%s Comment', '%s Comments', get_comments_number(), 'novi')
-                ),
-                number_format_i18n(get_comments_number())
+                esc_html($comments_text),
+                number_format_i18n($comments_number)
             );
             ?>
         </h3>

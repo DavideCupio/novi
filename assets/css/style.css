@@ -63,7 +63,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  text-decoration: none !important;
 }
 
 /* --------------------------------- */
@@ -407,10 +406,25 @@ ol li::marker {
   margin: 0;
   padding: 0;
 }
+/* Underline Links inside content areas (accessibility requirement) */
 .widget_block a,
-.entry-content a {
+.entry-content a,
+.comment-content a,
+.wp-block-paragraph a,
+.wp-block-list a,
+.wp-block-table a,
+.wp-block-quote a {
   text-decoration: underline !important;
+  text-underline-offset: 2px;
+  text-decoration-thickness: from-font;
   font-weight: 600 !important;
+}
+/* No underline in navigation and buttons */
+.site-header a,
+.main-navigation a,
+.header-navigation__list li a,
+.wp-block-button__link {
+  text-decoration: none;
 }
 /* --------------------------------- */
 /*               LINKS               */
@@ -1076,42 +1090,40 @@ body.no-scroll {
 /*          TOP BUTTON SCROLL        */
 /* --------------------------------- */
 
-@media (min-width: 768px) {
-  .scroll-top {
-    position: absolute;
-    top: 22px;
-    right: 22px;
-    display: none;
-    place-content: center;
-    height: 44px;
-    width: 44px;
-    background-color: var(--wp--preset--color--button);
-    color: var(--wp--preset--color--basecolor);
-    border: none;
-    cursor: pointer;
-    border-radius: 8px;
-    z-index: 5;
-    will-change: transform;
-    transform: translateY(0) scale(1);
-    transition: transform 0.35s ease-in-out, background-color 0.5s ease-in-out;
-    box-shadow: inset 0 4px 2px #0d48a141, 0 0px 0px #0d48a141;
-  }
-  .scroll-top:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 4px #00000091, 0 4px 0 #00000091;
-  }
-  .scroll-top.is-visible {
-    display: grid;
-  }
+.scroll-top {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  display: none;
+  place-content: center;
+  height: 44px;
+  width: 44px;
+  background-color: var(--wp--preset--color--button);
+  color: var(--wp--preset--color--basecolor);
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  z-index: 5;
+  will-change: transform;
+  transform: translateY(0) scale(1);
+  transition: transform 0.35s ease-in-out, background-color 0.5s ease-in-out;
+  box-shadow: inset 0 4px 2px #0d48a141, 0 0px 0px #0d48a141;
+}
+.scroll-top:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 4px #00000091, 0 4px 0 #00000091;
+}
+.scroll-top.is-visible {
+  display: grid;
+}
 
-  .scroll-top:focus-visible {
-    outline: 2px solid var(--wp--preset--color--focus);
-    outline-offset: 3px;
-  }
+.scroll-top:focus-visible {
+  outline: 2px solid var(--wp--preset--color--focus);
+  outline-offset: 3px;
+}
 
-  .scroll-top svg path {
-    fill: currentColor;
-  }
+.scroll-top svg path {
+  fill: currentColor;
 }
 
 /* --------------------------------- */
@@ -1414,6 +1426,11 @@ body.no-scroll {
 .page-description span {
   color: var(--wp--preset--color--button);
   font-weight: var(--wp--custom--font-weight--medium);
+}
+.entry-page-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .entry-meta * {
   color: var(--wp--preset--color--contrastcolor);

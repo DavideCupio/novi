@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-08-16T09:21:58+00:00\n"
+"POT-Creation-Date: 2025-08-16T10:11:24+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: novi\n"
@@ -47,48 +47,48 @@ msgstr ""
 msgid "This post is password protected. Enter the password to view comments."
 msgstr ""
 
-#: comments.php:26
+#: comments.php:28
 #, php-format
 msgid "%s Comment"
 msgid_plural "%s Comments"
 msgstr[0] ""
 msgstr[1] ""
 
-#: comments.php:35
-#: comments.php:54
+#: comments.php:38
+#: comments.php:57
 msgid "Previous comments"
 msgstr ""
 
-#: comments.php:36
-#: comments.php:55
+#: comments.php:39
+#: comments.php:58
 msgid "Next comments"
 msgstr ""
 
-#: comments.php:60
+#: comments.php:63
 msgid "Comments are closed."
 msgstr ""
 
-#: comments.php:69
+#: comments.php:72
 msgid "Leave a comment"
 msgstr ""
 
-#: comments.php:74
+#: comments.php:77
 msgid "Submit comment"
 msgstr ""
 
-#: comments.php:75
+#: comments.php:78
 msgid "Cancel reply"
 msgstr ""
 
-#: comments.php:78
+#: comments.php:81
 msgid "Name"
 msgstr ""
 
-#: comments.php:82
+#: comments.php:85
 msgid "Email"
 msgstr ""
 
-#: comments.php:87
+#: comments.php:90
 msgid "Comment"
 msgstr ""
 
@@ -96,7 +96,7 @@ msgstr ""
 msgid "Site information"
 msgstr ""
 
-#: footer.php:31
+#: footer.php:32
 #, php-format
 msgid "&copy; %1$s %2$s. All rights reserved."
 msgstr ""
@@ -109,39 +109,39 @@ msgstr ""
 msgid "Tempo di lettura non disponibile"
 msgstr ""
 
-#: functions.php:123
+#: functions.php:125
 #, php-format
 msgid "%d minuto di lettura"
 msgid_plural "%d minuti di lettura"
 msgstr[0] ""
 msgstr[1] ""
 
-#: functions.php:147
+#: functions.php:150
 msgid "Sidebar"
 msgstr ""
 
-#: functions.php:149
+#: functions.php:152
 msgid "Sidebar principale"
 msgstr ""
 
-#: functions.php:157
+#: functions.php:160
 msgid "Footer left"
 msgstr ""
 
-#: functions.php:159
-#: functions.php:169
+#: functions.php:162
+#: functions.php:172
 msgid "Widget nel footer"
 msgstr ""
 
-#: functions.php:167
+#: functions.php:170
 msgid "Footer right"
 msgstr ""
 
-#: functions.php:184
+#: functions.php:187
 msgid "Call to Action"
 msgstr ""
 
-#: functions.php:185
+#: functions.php:188
 msgid "A centered call to action section."
 msgstr ""
 
@@ -159,18 +159,18 @@ msgstr ""
 msgid "Main menu "
 msgstr ""
 
-#: home.php:86
+#: home.php:97
 msgid "Browse blog posts"
 msgstr ""
 
-#: home.php:90
-#: home.php:93
+#: home.php:101
+#: home.php:104
 #: single.php:35
 msgid "Previous"
 msgstr ""
 
-#: home.php:112
-#: home.php:115
+#: home.php:123
+#: home.php:126
 #: single.php:46
 msgid "Next"
 msgstr ""
@@ -238,7 +238,7 @@ msgctxt "Pattern title"
 msgid "Header"
 msgstr ""
 
-#: search.php:46
+#: search.php:47
 msgid "No results found for your search."
 msgstr ""
 
@@ -286,12 +286,13 @@ msgstr ""
 msgid "Back Home"
 msgstr ""
 
-#: template-parts/above.php:100
+#. translators: %s: blog section title
+#: template-parts/above.php:102
 #, php-format
 msgid "Blog section: %s"
 msgstr ""
 
-#: template-parts/above.php:116
+#: template-parts/above.php:119
 msgid "Results for: "
 msgstr ""
 
