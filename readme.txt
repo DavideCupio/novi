@@ -43,38 +43,41 @@ Full license terms: https://www.fontshare.com/licenses/itf-ffl
 
 All images included in this theme were created by the theme author using OpenAI's image generation tools (DALL·E).
 
-According to OpenAI's Terms of Use, the user (theme author) owns all rights to the generated images and can use them for any purpose, including commercial use, reproduction, modification, and distribution, without additional restrictions.
+OpenAI’s Terms state that, as between the user and OpenAI, the user owns the output and OpenAI assigns to the user all rights in the output:
+https://openai.com/policies/row-terms-of-use
 
-These rights are compatible with the GNU General Public License (GPL) version 2 or later, under which this theme is released. Therefore, all generated images are also released under the GPL v2 or later.
+OpenAI also states that images created with DALL·E 3 are the user’s to use, and the user does not need OpenAI’s permission to reprint, sell, or merchandise them:
+https://openai.com/dall-e-3/
 
-License URL: https://openai.com/policies/terms-of-use
+As the rights holder of the generated images, the theme author releases all such images under the GNU General Public License version 2 or later (GPL-2.0-or-later), the same license as the theme.
+
+GPL license text: https://www.gnu.org/licenses/gpl-2.0.html
 
 == Image Assets (file-level listing) ==
 
 1) File: assets/img/logo-novi.png
-   Author: [Cupioli Davide] (AI-generated with OpenAI DALL·E)
+   Author: Cupioli Davide (AI-generated with OpenAI DALL·E)
    Source: Original work (no external source)
    License: GPL-2.0-or-later
    License URL: https://www.gnu.org/licenses/gpl-2.0.html
 
 2) File: assets/img/fallback.jpg
-   Author: [Cupioli Davide] (AI-generated with OpenAI DALL·E)
+   Author: Cupioli Davide (AI-generated with OpenAI DALL·E)
    Source: Original work (no external source)
    License: GPL-2.0-or-later
    License URL: https://www.gnu.org/licenses/gpl-2.0.html
 
 3) File: assets/img/fallback-article.jpg
-   Author: [Cupioli Davide]
+   Author: Cupioli Davide (AI-generated with OpenAI DALL·E)
    Source: Original work (no external source)
    License: GPL-2.0-or-later
    License URL: https://www.gnu.org/licenses/gpl-2.0.html
 
 4) File: screenshot.png
-   Author: [Cupioli Davide]
+   Author: Cupioli Davide
    Source: Generated from theme preview
    License: GPL-2.0-or-later
    License URL: https://www.gnu.org/licenses/gpl-2.0.html
-
 == Installation ==
 
 1. Upload the theme folder to `/wp-content/themes/novi/`  

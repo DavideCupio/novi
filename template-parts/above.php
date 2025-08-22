@@ -40,7 +40,7 @@ function novi_get_page_header_background($id = null)
         style="background-image: url('<?php echo esc_url($background_image); ?>'); background-size: cover; background-position: center; background-repeat: no-repeat;">
         <div class="page-inner container has-global-padding">
             <div class="page-description">
-                breadcrumbs
+                <?php _e('breadcrumbs', 'novi'); ?>
             </div>
             <div class="entry-page-header">
                 <h1 id="page-header-title" class="page-title">
@@ -70,7 +70,7 @@ function novi_get_page_header_background($id = null)
             </div>
             <?php if (function_exists('rank_math_the_breadcrumbs')) : ?>
                 <div class="page-description">
-                    breadcrumbs
+                    <?php _e('breadcrumbs', 'novi'); ?>
                 </div>
             <?php endif; ?>
             <div class="entry-page-header">
@@ -104,7 +104,7 @@ function novi_get_page_header_background($id = null)
         style="background-image: url('<?php echo esc_url($background_image); ?>'); background-size: cover; background-position: center; background-repeat: no-repeat;">
         <div class="page-inner container has-global-padding">
             <div class="page-description">
-                breadcrumbs
+                <?php _e('breadcrumbs', 'novi'); ?>
             </div>
             <h1 id="page-header-title" class="page-title"><?php echo esc_html(get_the_title($blog_page_id)); ?></h1>
         </div>

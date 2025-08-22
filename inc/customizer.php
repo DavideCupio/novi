@@ -1,7 +1,5 @@
 <?php
 
-namespace Novi\Theme;
-
 if (!defined('ABSPATH')) {
     exit;
 }
@@ -11,7 +9,7 @@ function novi_custom_logo_setup()
 {
     add_theme_support('custom-logo');
 }
-add_action('after_setup_theme', __NAMESPACE__ . '\\novi_custom_logo_setup');
+add_action('after_setup_theme', 'novi_custom_logo_setup');
 
 
 
@@ -127,57 +125,132 @@ function novi_theme_customize_register($wp_customize)
         ),
     ]);
 }
-add_action('customize_register', __NAMESPACE__ . '\\novi_theme_customize_register');
+add_action('customize_register', 'novi_theme_customize_register');
 
-/** Inietta i font caricati dinamicamente nel
-
-<head> */
-function novi_inline_font_styles()
+/**
+ * Genera il CSS per i font caricati dinamicamente (Customizer) senza stamparlo direttamente.
+ * Restituisce una stringa CSS da agganciare a uno stylesheet enqueued tramite wp_add_inline_style().
+ */
+function novi_build_inline_font_css()
 {
-    $body_font = get_theme_mod('novi_font_body');
+    $body_font    = get_theme_mod('novi_font_body');
     $heading_font = get_theme_mod('novi_font_heading');
 
-    if (!$body_font && !$heading_font) {
+    if (! $body_font && ! $heading_font) {
+        return '';
+    }
+
+    $css = '';
+
+    // Body font.
+    if ($body_font) {
+        $ext    = pathinfo($body_font, PATHINFO_EXTENSION);
+        $format = ('ttf' === strtolower($ext)) ? 'truetype' : 'woff2';
+
+        // Usa esc_url per l'URL; $format è una whitelist (truetype/woff2).
+        $css .= "@font-face{font-family:'CustomBodyFont';src:url('" . esc_url($body_font) . "') format('{$format}');font-weight:400;font-style:normal;font-display:swap;}";
+        $css .= ":root{--wp--preset--font-family--body:'CustomBodyFont',sans-serif;}";
+    }
+
+    // Heading font.
+    if ($heading_font) {
+        $ext    = pathinfo($heading_font, PATHINFO_EXTENSION);
+        $format = ('ttf' === strtolower($ext)) ? 'truetype' : 'woff2';
+
+        $css .= "@font-face{font-family:'CustomHeadingFont';src:url('" . esc_url($heading_font) . "') format('{$format}');font-weight:700;font-style:normal;font-display:swap;}";
+        $css .= ":root{--wp--preset--font-family--heading:'CustomHeadingFont',sans-serif;}";
+    }
+
+    return $css;
+}
+
+/**
+ * Aggancia il CSS dei font allo stylesheet frontend già enqueued.
+ * Sostituisci 'novi-style' con l'handle reale del tuo tema, se diverso.
+ */
+function novi_add_inline_font_styles()
+{
+    $css = novi_build_inline_font_css();
+    if ('' === $css) {
         return;
     }
-
-    echo '<style>
-    ';
-
-
-    if ($body_font) {
-        $ext = pathinfo($body_font, PATHINFO_EXTENSION);
-        $format = ($ext === 'ttf') ? 'truetype' : 'woff2';
-
-        echo "@font-face {
-font-family: 'CustomBodyFont';
-        src: url('" . esc_url($body_font) . "') format('" . esc_attr($format) . "');
-        font-weight: 400;
-        font-style: normal;
-        font-display: swap;
-    }
-
-    ";
-        echo ":root { --wp--preset--font-family--body: 'CustomBodyFont', sans-serif; }";
-    }
-
-    if ($heading_font) {
-        $ext = pathinfo($heading_font, PATHINFO_EXTENSION);
-        $format = ($ext === 'ttf') ? 'truetype' : 'woff2';
-
-        echo "@font-face {
-font-family: 'CustomHeadingFont';
-        src: url('" . esc_url($heading_font) . "') format('" . esc_attr($format) . "');
-        font-weight: 700;
-        font-style: normal;
-        font-display: swap;
-    }
-
-    ";
-        echo ":root { --wp--preset--font-family--heading: 'CustomHeadingFont', sans-serif; }";
-    }
-
-    echo '
-    </style>';
+    wp_add_inline_style('novi-main-style', $css);
 }
-add_action('wp_head', __NAMESPACE__ . '\\novi_inline_font_styles');
+add_action('wp_enqueue_scripts', 'novi_add_inline_font_styles', 20);
+
+/**
+ * Aggancia lo stesso CSS dei font anche nell'editor a blocchi.
+ */
+function novi_add_inline_font_styles_editor()
+{
+    $css = novi_build_inline_font_css();
+    if ('' === $css) {
+        return;
+    }
+    wp_add_inline_style('wp-block-library', $css);
+}
+add_action('enqueue_block_editor_assets', 'novi_add_inline_font_styles_editor', 20);
+
+/**
+ * Costruisce il CSS delle variabili colore a partire dai setting del Customizer.
+ * Non stampa nulla: restituisce una stringa da agganciare con wp_add_inline_style().
+ */
+function novi_build_palette_css()
+{
+    $slugs = ['basecolor', 'contrastcolor', 'primary', 'secondary', 'button', 'hover', 'warning', 'focus'];
+    $vars  = [];
+
+    foreach ($slugs as $slug) {
+        $raw = get_theme_mod("novi_theme_{$slug}");
+        if (! $raw) {
+            continue;
+        }
+
+        // 1) HEX sicuri (#fff / #ffffff)
+        $hex = sanitize_hex_color($raw);
+        if ($hex) {
+            $vars[] = "--{$slug}: {$hex}; --wp--preset--color--{$slug}: var(--{$slug});";
+            continue;
+        }
+
+        // 2) (Opzionale) consenti rgb/rgba molto basilari
+        if (is_string($raw) && preg_match('/^rgba?\(\s*\d{1,3}\s*,\s*\d{1,3}\s*,\s*\d{1,3}(?:\s*,\s*(0|1|0?\.\d+))?\s*\)$/', trim($raw))) {
+            $safe = trim($raw);
+            $vars[] = "--{$slug}: {$safe}; --wp--preset--color--{$slug}: var(--{$slug});";
+        }
+    }
+
+    if (empty($vars)) {
+        return '';
+    }
+
+    return ':root{' . implode('', $vars) . '}';
+}
+
+/**
+ * Aggancia il CSS della palette colori allo stylesheet frontend del tema.
+ * Handle allineato a quello usato per i font: 'novi-main-style'.
+ */
+function novi_add_dynamic_palette_css()
+{
+    $css = novi_build_palette_css();
+    if ('' === $css) {
+        return;
+    }
+    // Assicurati che 'novi-main-style' sia effettivamente enqueued.
+    wp_add_inline_style('novi-main-style', $css);
+}
+add_action('wp_enqueue_scripts', 'novi_add_dynamic_palette_css', 21);
+
+/**
+ * Aggancia la stessa palette anche nell'editor a blocchi.
+ */
+function novi_add_dynamic_palette_css_editor()
+{
+    $css = novi_build_palette_css();
+    if ('' === $css) {
+        return;
+    }
+    wp_add_inline_style('wp-block-library', $css);
+}
+add_action('enqueue_block_editor_assets', 'novi_add_dynamic_palette_css_editor', 21);
