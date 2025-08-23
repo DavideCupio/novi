@@ -55,7 +55,7 @@ function novi_setup_theme()
     load_theme_textdomain('novi', get_template_directory() . '/languages');
 
     register_nav_menus([
-        'header-menu' => __('Menu principale', 'novi'),
+        'novi-header-menu' => __('Menu principale', 'novi'),
     ]);
 }
 add_action('after_setup_theme', 'novi_setup_theme');
@@ -148,7 +148,7 @@ function novi_register_sidebars()
 {
     register_sidebar([
         'name' => esc_html__('Sidebar', 'novi'),
-        'id' => 'sidebar',
+        'id' => 'novi-sidebar',
         'description' => esc_html__('Sidebar principale', 'novi'),
         'before_widget' => '<div class="widget %2$s">',
         'after_widget' => '</div>',
@@ -158,7 +158,7 @@ function novi_register_sidebars()
 
     register_sidebar([
         'name' => esc_html__('Footer left', 'novi'),
-        'id' => 'footer-left',
+        'id' => 'novi-footer-left',
         'description' => esc_html__('Widget nel footer', 'novi'),
         'before_widget' => '<div class="footer-widget-left %2$s">',
         'after_widget' => '</div>',
@@ -168,7 +168,7 @@ function novi_register_sidebars()
 
     register_sidebar([
         'name' => esc_html__('Footer right', 'novi'),
-        'id' => 'footer_right',
+        'id' => 'novi-footer-right',
         'description' => esc_html__('Widget nel footer', 'novi'),
         'before_widget' => '<div class="footer-widget-right %2$s">',
         'after_widget' => '</div>',

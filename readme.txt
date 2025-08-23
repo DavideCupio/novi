@@ -34,7 +34,10 @@ Distributed under the GNU GPL v2 or later license.
 == Fonts ==
 
 - Neco (by Indian Type Foundry, Fontshare — Free for commercial use)  
+  Source: https://www.fontshare.com/fonts/neco  
+
 - Pally (by Indian Type Foundry, Fontshare — Free for commercial use)  
+  Source: https://www.fontshare.com/fonts/pally  
 
 Fonts are distributed via Fontshare with a free license for commercial use.  
 Full license terms: https://www.fontshare.com/licenses/itf-ffl

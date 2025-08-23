@@ -41,30 +41,3 @@ if (! function_exists('novi_build_palette_css')) {
         return ':root{' . implode('', $vars) . '}';
     }
 }
-
-if (! function_exists('novi_add_dynamic_palette_css')) {
-    function novi_add_dynamic_palette_css(): void
-    {
-        $css = novi_build_palette_css();
-        if ('' === $css) {
-            return;
-        }
-        // Sostituisci 'novi-style' con il tuo handle se necessario.
-        wp_add_inline_style('novi-main-style', $css);
-    }
-    // Dopo che gli stili sono stati enqueued.
-    add_action('wp_enqueue_scripts', 'novi_add_dynamic_palette_css', 20);
-}
-
-if (! function_exists('novi_add_dynamic_palette_css_editor')) {
-    // Applica le stesse variabili nell’editor blocchi.
-    function novi_add_dynamic_palette_css_editor(): void
-    {
-        $css = novi_build_palette_css();
-        if ('' === $css) {
-            return;
-        }
-        wp_add_inline_style('wp-block-library', $css);
-    }
-    add_action('enqueue_block_editor_assets', 'novi_add_dynamic_palette_css_editor', 20);
-}

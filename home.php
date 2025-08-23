@@ -81,11 +81,12 @@ get_header();
                 ?>
                     <article class="<?php echo esc_attr($article_classes); ?>" style="<?php echo esc_attr($style); ?>">
                         <a href="<?php echo esc_url(get_permalink()); ?>" class="post-link">
-                            <div class="post-content">
-                                <h3 class="post-title"><?php echo esc_html(get_the_title()); ?></h3>
-                                <p class="post-excerpt"><?php echo wp_kses_post(novi_get_custom_excerpt()); ?></p>
-                            </div>
+
                         </a>
+                        <div class="post-content">
+                            <h3 class="post-title"><?php echo esc_html(get_the_title()); ?></h3>
+                            <p class="post-excerpt"><?php echo wp_kses_post(novi_get_custom_excerpt()); ?></p>
+                        </div>
                     </article>
                 <?php
                     $i++;
@@ -93,41 +94,75 @@ get_header();
                 ?>
             </div> <!-- chiude grid-bento-post -->
 
-            <nav class="pagination alignwide" role="navigation"
-                aria-label="<?php esc_attr_e('Browse blog posts', 'novi'); ?>">
-                <ul class="pagination-list">
-                    <li class="pagination-item">
-                        <?php
-                        $prev_link = get_previous_posts_link(__('Previous', 'novi'));
-                        echo $prev_link
-                            ? str_replace('<a', '<a class="site-button style-outline" aria-disabled="false"', $prev_link)
-                            : '<a class="site-button style-outline" href="#" aria-disabled="true" tabindex="-1">' . __('Previous', 'novi') . '</a>';
-                        ?>
-                    </li>
-                    <?php
-                    $pagination_links = paginate_links(array(
-                        'total' => $wp_query->max_num_pages,
-                        'current' => max(1, get_query_var('paged')),
-                        'type' => 'array',
-                        'prev_next' => false,
-                    ));
+            <?php
+            global $wp_query;
 
-                    if (!empty($pagination_links)) :
-                        foreach ($pagination_links as $link) :
-                            echo '<li class="pagination-item">' . str_replace('<a', '<a class="site-button style-outline"', $link) . '</li>';
-                        endforeach;
-                    endif;
-                    ?>
-                    <li class="pagination-item">
-                        <?php
-                        $next_link = get_next_posts_link(__('Next', 'novi'));
-                        echo $next_link
-                            ? str_replace('<a', '<a class="site-button style-outline" aria-disabled="false"', $next_link)
-                            : '<a class="site-button style-outline" href="#" aria-disabled="true" tabindex="-1">' . __('Next', 'novi') . '</a>';
-                        ?>
-                    </li>
-                </ul>
-            </nav>
+            $current = max(1, (int) get_query_var('paged'));
+            $total   = max(1, (int) $wp_query->max_num_pages);
+
+            // Link numerati come array (senza prev/next: li gestiamo a mano)
+            $links = paginate_links([
+                'total'     => $total,
+                'current'   => $current,
+                'type'      => 'array',
+                'end_size'  => 1,
+                'mid_size'  => 2,
+                'prev_next' => false,
+            ]);
+
+            // Costruiamo gli href di prev/next
+            $prev_href = $current > 1       ? get_pagenum_link($current - 1) : '';
+            $next_href = $current < $total  ? get_pagenum_link($current + 1) : '';
+
+            if ($total > 1) : ?>
+                <nav class="pagination alignwide" role="navigation"
+                    aria-label="<?php echo esc_attr__('Browse blog posts', 'novi'); ?>">
+                    <ul class="pagination-list">
+
+                        <!-- Prev -->
+                        <li class="pagination-item">
+                            <?php if ($prev_href) : ?>
+                                <a class="site-button style-outline" href="<?php echo esc_url($prev_href); ?>" rel="prev">
+                                    <?php echo esc_html__('Previous', 'novi'); ?>
+                                </a>
+                            <?php else : ?>
+                                <span class="site-button style-outline is-disabled" aria-disabled="true">
+                                    <?php echo esc_html__('Previous', 'novi'); ?>
+                                </span>
+                            <?php endif; ?>
+                        </li>
+
+                        <!-- Numeri -->
+                        <?php if (! empty($links)) :
+                            foreach ($links as $l) :
+                                if (strpos($l, 'current') !== false) {
+                                    // Pagina corrente: di solito è <span class="page-numbers current">N</span>
+                                    $num = (int) filter_var(wp_strip_all_tags($l), FILTER_SANITIZE_NUMBER_INT);
+                                    echo '<li class="pagination-item"><span class="site-button style-outline current" aria-current="page">' . esc_html($num) . '</span></li>';
+                                } elseif (preg_match('/href=[\"\\\']([^\"\\\']+)[\"\\\'][^>]*>(.*?)<\\/a>/', $l, $m)) {
+                                    $href = $m[1];
+                                    $text = wp_strip_all_tags($m[2]);
+                                    echo '<li class="pagination-item"><a class="site-button style-outline" href="' . esc_url($href) . '">' . esc_html($text) . '</a></li>';
+                                }
+                            endforeach;
+                        endif; ?>
+
+                        <!-- Next -->
+                        <li class="pagination-item">
+                            <?php if ($next_href) : ?>
+                                <a class="site-button style-outline" href="<?php echo esc_url($next_href); ?>" rel="next">
+                                    <?php echo esc_html__('Next', 'novi'); ?>
+                                </a>
+                            <?php else : ?>
+                                <span class="site-button style-outline is-disabled" aria-disabled="true">
+                                    <?php echo esc_html__('Next', 'novi'); ?>
+                                </span>
+                            <?php endif; ?>
+                        </li>
+
+                    </ul>
+                </nav>
+            <?php endif; ?>
 
         </div>
     </section><!-- blog posts -->

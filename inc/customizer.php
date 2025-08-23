@@ -84,7 +84,7 @@ function novi_theme_customize_register($wp_customize)
 
     // Tipografia personalizzata
     $wp_customize->add_section('novi_typography_section', [
-        'title' => __('Typography', 'novi'),
+        'title' => __('Novi typography', 'novi'),
         'priority' => 95,
     ]);
 
