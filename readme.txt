@@ -64,7 +64,6 @@ GPL license text: https://www.gnu.org/licenses/gpl-2.0.html
    License: CC0 License
    License URL: https://stocksnap.io/license
 
-
 4) File: screenshot.png
    Author: Cupioli Davide
    Source: Generated from theme preview
