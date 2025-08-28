@@ -60,7 +60,7 @@ GPL license text: https://www.gnu.org/licenses/gpl-2.0.html
    License URL: https://stocksnap.io/license
 
 3) File: assets/img/fallback-article.jpg
-   Source: https://stocksnap.io/photo/sunset-sky-FYL96LKOKP
+   Source: https://stocksnap.io/photo/mountain-highland-JXP8DE2ZSV
    License: CC0 License
    License URL: https://stocksnap.io/license
 
