@@ -1168,7 +1168,10 @@ body.no-scroll {
   border-radius: 8px;
 }
 .site-branding img {
-  box-shadow: unset;
+  border-radius: 0px;
+}
+.site-branding a {
+  border-radius: 0px;
 }
 .brand:focus-visible,
 .site-title:focus-visible {
