@@ -44,37 +44,26 @@ Full license terms: https://www.fontshare.com/licenses/itf-ffl
 
 == Image Licenses ==
 
-All images included in this theme were created by the theme author using OpenAI's image generation tools (DALL·E).
-
-OpenAI’s Terms state that, as between the user and OpenAI, the user owns the output and OpenAI assigns to the user all rights in the output:
-https://openai.com/policies/row-terms-of-use
-
-OpenAI also states that images created with DALL·E 3 are the user’s to use, and the user does not need OpenAI’s permission to reprint, sell, or merchandise them:
-https://openai.com/dall-e-3/
-
-As the rights holder of the generated images, the theme author releases all such images under the GNU General Public License version 2 or later (GPL-2.0-or-later), the same license as the theme.
-
 GPL license text: https://www.gnu.org/licenses/gpl-2.0.html
 
 == Image Assets (file-level listing) ==
 
 1) File: assets/img/logo-novi.png
-   Author: Cupioli Davide (AI-generated with OpenAI DALL·E)
-   Source: Original work (no external source)
+   Author: Cupioli Davide
+   Source: Original work
    License: GPL-2.0-or-later
    License URL: https://www.gnu.org/licenses/gpl-2.0.html
 
 2) File: assets/img/fallback.jpg
-   Author: Cupioli Davide (AI-generated with OpenAI DALL·E)
-   Source: Original work (no external source)
-   License: GPL-2.0-or-later
-   License URL: https://www.gnu.org/licenses/gpl-2.0.html
+   Source: https://stocksnap.io/photo/mountain-highland-QTUFKRP86K
+   License: CC0 License
+   License URL: https://stocksnap.io/license
 
 3) File: assets/img/fallback-article.jpg
-   Author: Cupioli Davide (AI-generated with OpenAI DALL·E)
-   Source: Original work (no external source)
-   License: GPL-2.0-or-later
-   License URL: https://www.gnu.org/licenses/gpl-2.0.html
+   Source: https://stocksnap.io/photo/sunset-sky-FYL96LKOKP
+   License: CC0 License
+   License URL: https://stocksnap.io/license
+
 
 4) File: screenshot.png
    Author: Cupioli Davide
