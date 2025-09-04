@@ -63,10 +63,25 @@ add_action('after_setup_theme', 'novi_setup_theme');
 // Caricamento degli script e degli stili del tema nel frontend
 function novi_enqueue_scripts()
 {
-    $version = defined('NOVI_VERSION') ? NOVI_VERSION : wp_get_theme()->get('Version');
+    // Versioni “giuste”
+    $parent_version = wp_get_theme(get_template())->get('Version'); // versione tema parent
 
-    wp_enqueue_style('novi-main-style', get_stylesheet_directory_uri() . '/assets/css/style.css', [], $version);
-    wp_enqueue_script('novi-main-script', get_stylesheet_directory_uri() . '/assets/js/script.js', ['jquery'], $version, true);
+    // CSS parent dal parent
+    wp_enqueue_style(
+        'novi-main-style',
+        get_template_directory_uri() . '/assets/css/style.css',
+        [],
+        $parent_version
+    );
+
+    // JS parent dal parent
+    wp_enqueue_script(
+        'novi-main-script',
+        get_template_directory_uri() . '/assets/js/script.js',
+        ['jquery'],
+        $parent_version,
+        true
+    );
 
     if (is_singular() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
